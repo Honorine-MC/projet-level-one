@@ -1,4 +1,21 @@
+public class Obstacle extends Element {
+	private boolean ouvert;
+	
+	/*Constructor*/
+	public Obstacle(int pos, boolean ouvert){
+		super(pos);
+		this.ouvert = ouvert;
+	}
+	
+	
+	/*Getter*/
+	public boolean isOuvert() {
+		return ouvert;
+	}
 
-public class Obstacle {
+	/*Setter*/
+	public void setOuvert(boolean ouvert) {
+		this.ouvert = ouvert;
+	}
 
 }
