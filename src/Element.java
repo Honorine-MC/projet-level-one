@@ -1,18 +1,18 @@
 
 public abstract class Element {
-	private double position;
+	private int position;
 	
 	/*Constructeur*/
-	public Element(double pos){
+	public Element(int pos){
 		this.position = pos;
 	}
 
 	/*Getter et setter*/
-	public double getPosition() {
+	public int getPosition() {
 		return position;
 	}
 
-	public void setPosition(double position) {
+	public void setPosition(int position) {
 		this.position = position;
 	}
 	
