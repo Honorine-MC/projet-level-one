@@ -26,6 +26,13 @@ public class Personnage extends Element{
 	public void setVie(double vie) {
 		this.vie = vie;
 	}
+
+	/*ToString*/
+	public String toString() {
+		return "Personnage [nom=" + nom + ", vie=" + vie + "]";
+	}
+	
+	
 	
 
 }
