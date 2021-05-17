@@ -3,7 +3,9 @@ public class Partie {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hello world, hi"); 
+		Map map = new Map();
+		map.init();
+		System.out.println(map.plateau.toString());
 	}
 
 }

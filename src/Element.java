@@ -1,5 +1,5 @@
 
-public abstract class Element {
+public class Element {
 	private int position;
 	
 	/*Constructeur*/

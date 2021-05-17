@@ -27,7 +27,12 @@ public class Case {
 	public void setPosition(int position) {
 		this.position = position;
 	}
-	
+
+	/*toString*/
+	@Override
+	public String toString() {
+		return "Case [element=" + element.toString() + "]";
+	}
 	
 	
 }
