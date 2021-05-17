@@ -4,7 +4,7 @@ public class Personnage extends Element{
 	private double vie;
 	
 	/*Constructeur*/
-	public Personnage(double pos, String nom, double vie){
+	public Personnage(int pos, String nom, double vie){
 		super(pos);
 		this.nom = nom;
 		this.vie = vie;
