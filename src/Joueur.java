@@ -6,7 +6,7 @@ public class Joueur extends Personnage {
 	private double degat;
 	
 	//constructeur
-	public Joueur(String nom,int vie,double degat) {
+	public Joueur(String nom,double vie,double degat) {
 		super(0,nom,vie);
 		inventaire = new ArrayList<Item>();
 		this.xp = 0;
