@@ -5,7 +5,7 @@ public class Partie {
 		// TODO Auto-generated method stub
 		Map map = new Map(20,20);
 		map.init();
-		System.out.println(map.plateau.toString());
+		map.add();
+//		System.out.println(map.plateau.toString());
 		}
-
 }

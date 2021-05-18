@@ -3,13 +3,9 @@ import java.util.ArrayList;
 public class Map {
 	
 	/*Attributs*/
-	/* Supprimer les valeurs pour passer en sur mesure */
-	private int nbLig = 20;
-	private int nbCol = 20;
+	public int nbLig;
+	public int nbCol;
 	public Case [][] plateau;
-	
-//	public ArrayList<Case> plateau;
-//	private int taille = 32;
 	
 	/*Constructeur*/
 	public Map(int n, int p) {
@@ -23,17 +19,24 @@ public class Map {
 	 */
 	public void init(){
 		/*On place les case vide avec leur positions*/
+		System.out.println();
 		for(int i = 0; i<nbLig; i++) {
-				for(int j = 0; j<nbCol; j++) {
-					this.plateau[i][j] = new Case(new Element(i,j),i,j);
-				}
+			for(int j = 0; j<nbCol; j++) {
+				this.plateau[i][j] = new Case(new Element(i,j),i,j);
+				System.out.print(" | " + this.plateau[i][j]); /* TODO Sert uniquement a visualiser la forme */
+			}
+			System.out.println(" | ");
 		}
-		
+		System.out.println();
+	}
+	
+	public void add() {
+
 		/*Placement des elements sur la map*/
 		Joueur player = new Joueur("Riyad Mahrez",10,2);
 		player.setPositionX(0);
 		player.setPositionY(0);
-		this.plateau[0][0].setElement(player);
+//		this.plateau[0][0].setElement(player);
 			
 		/*Position aléatoire du monstre dans les limites de la map*/
 		int posX1 = 0 + (int)(Math.random() * ((nbLig - 0) + 1));
