@@ -7,7 +7,7 @@ public class Personnage extends Element{
 	public Personnage(int pos, String nom, double vie){
 		super(pos);
 		this.nom = nom;
-		this.vie = vie;
+		this.vie = vie; 
 	}
 	
 	/*Getter et setter*/
