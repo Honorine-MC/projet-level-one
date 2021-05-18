@@ -26,29 +26,32 @@ public class Map {
 		for(int i = 0; i<nbLig; i++) {
 				for(int j = 0; j<nbCol; j++) {
 					this.plateau[i][j] = new Case(new Element(i,j),i,j);
+				}
 		}
-		}
+		
 		/*Placement des elements sur la map*/
 		Joueur player = new Joueur("Riyad Mahrez",10,2);
 		player.setPositionX(0);
 		player.setPositionY(0);
 		this.plateau[0][0].setElement(player);
+			
+		/*Position aléatoire du monstre dans les limites de la map*/
+		int posX1 = 0 + (int)(Math.random() * ((nbLig - 0) + 1));
+		int posY1 = 0 + (int)(Math.random() * ((nbCol - 0) + 1));
+
+		/*Position aléatoire de l'item dans les limites de la map*/
+		int posX2 = 0 + (int)(Math.random() * ((nbLig - 0) + 1));
+		int posY2 = 0 + (int)(Math.random() * ((nbCol - 0) + 1));
 		
-		/*Placement au hazar juste pour tester*/
-//		for(Case c : this.plateau){
-//			if((c.getPositionX()%2 ==0) || (c.getPositionY()%2 ==0)){
-//				c.setElement(new Porte(c.getPositionX(), c.getPositionY(),true));
-//			}
-//			if((c.getPositionX()%3==0) || (c.getPositionY()%3==0)){
-//				c.setElement(new Item(c.getPositionX(), c.getPositionY(),"La puissance"));
-//			}
-//			if((c.getPositionX()%4==0) || (c.getPositionY()%4==0)){
-//				c.setElement(new Pnj(c.getPositionX(), c.getPositionY(),"Viens deuspi", new Item(c.getPositionX(), c.getPositionY(),"mets toi bien"),5));
-//			}
-//			else{
-//				c.setElement(new Monstre(c.getPositionX(), c.getPositionY(),"Méchant",10,2));
-//			}
-//		}
+		/*Position aléatoire du PNJ dans les limites de la map*/
+		int posX3 = 0 + (int)(Math.random() * ((nbLig - 0) + 1));
+		int posY3 = 0 + (int)(Math.random() * ((nbCol - 0) + 1));
+		
+		if(posX1 != 0 && posX2 != 0 && posX3 != 0 && posY1 != 0 && posY2 != 0 && posY3 != 0) {
+			new Monstre(posX1,posY1,"Monstre",10,2);
+			new Item(posX2,posY2,"baton");
+			new Pnj(posX3,posY3,"Viens deuspi", new Item(posX2, posY2,"mets toi bien"),5);
+		}
 	}
 
 }

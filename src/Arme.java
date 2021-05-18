@@ -3,8 +3,8 @@ public class Arme extends Item{
 	private double degat_apporte;
 	
 	//COnstructeur
-	public Arme(int position, String nom, double degat_apporte){
-		super(position,nom);
+	public Arme(int posX, int posY, String nom, double degat_apporte){
+		super(posX, posY,nom);
 		this.degat_apporte=degat_apporte;
 	}
 

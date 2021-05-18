@@ -2,8 +2,8 @@
 public class Item extends Element{
 	private String nom;
 	
-	public Item(int position, String nom){
-		super(position);
+	public Item(int posX, int posY, String nom){
+		super(posX, posY);
 		this.nom = nom;
 	}
 

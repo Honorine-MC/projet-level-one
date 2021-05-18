@@ -2,8 +2,8 @@
 public class Potion extends Item {
 	private double vie_apporte;
 	
-	public Potion(int position, String nom,double vie_apporte){
-		super(position,nom);
+	public Potion(int posX, int posY, String nom,double vie_apporte){
+		super(posX, posY,nom);
 		this.vie_apporte = vie_apporte;		
 	}
 
