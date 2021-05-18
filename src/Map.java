@@ -22,39 +22,70 @@ public class Map {
 		System.out.println();
 		for(int i = 0; i<nbLig; i++) {
 			for(int j = 0; j<nbCol; j++) {
-				this.plateau[i][j] = new Case(new Element(i,j),i,j);
-				System.out.print(" | " + this.plateau[i][j]); /* TODO Sert uniquement a visualiser la forme */
+				Element e = this.add();
+				this.plateau[i][j] = new Case(e,i,j);
 			}
-			System.out.println(" | ");
+		}
+		/*On place le joueur au debut de la Map*/
+		Joueur player = new Joueur("Riyad Mahrez",10,2);
+		player.setPositionX(0);
+		player.setPositionY(0);
+		this.plateau[0][0].setElement(player);
+	}
+	
+	/**
+	 * Function -> Affichage console de la map
+	 */
+	public void affiche(){
+		for(int i =0; i<this.nbLig ; i++){
+			for(int j=0; j<this.nbCol; j++){
+				if(this.plateau[i][j].getElement() instanceof Monstre){
+					System.out.print(" | " + "Monstre");
+				}
+				if(this.plateau[i][j].getElement() instanceof Pnj){
+					System.out.print(" | " + "Bicraveur");
+				}
+				if(this.plateau[i][j].getElement() instanceof Item){
+					System.out.print(" | " + "du biff");
+				}
+				if(this.plateau[i][j].getElement() instanceof Joueur){
+					System.out.print(" | " + "Mahrez");
+				}
+				if(this.plateau[i][j].getElement() instanceof Obstacle){
+					System.out.print(" | " + "Obstacle");
+				}
+			}
+			System.out.println("|");
 		}
 		System.out.println();
 	}
 	
-	public void add() {
-
-		/*Placement des elements sur la map*/
-		Joueur player = new Joueur("Riyad Mahrez",10,2);
-		player.setPositionX(0);
-		player.setPositionY(0);
-//		this.plateau[0][0].setElement(player);
-			
-		/*Position aléatoire du monstre dans les limites de la map*/
-		int posX1 = 0 + (int)(Math.random() * ((nbLig - 0) + 1));
-		int posY1 = 0 + (int)(Math.random() * ((nbCol - 0) + 1));
-
-		/*Position aléatoire de l'item dans les limites de la map*/
-		int posX2 = 0 + (int)(Math.random() * ((nbLig - 0) + 1));
-		int posY2 = 0 + (int)(Math.random() * ((nbCol - 0) + 1));
+	/** Function :
+	 * @return : Renvoi un element au hazar -> Un monstre un pnj ou un item..etc
+	 */
+	public Element add() {
 		
-		/*Position aléatoire du PNJ dans les limites de la map*/
-		int posX3 = 0 + (int)(Math.random() * ((nbLig - 0) + 1));
-		int posY3 = 0 + (int)(Math.random() * ((nbCol - 0) + 1));
+		Element element = new Element() ;	
+		/*Position aléatoire de lelement dans les limites de la map*/
+		int posX1 = 1 + (int)(Math.random() * (((nbLig-1) - 0) + 1));
+		int posY1 = 1 + (int)(Math.random() * (((nbCol-1)- 0) + 1));
 		
-		if(posX1 != 0 && posX2 != 0 && posX3 != 0 && posY1 != 0 && posY2 != 0 && posY3 != 0) {
-			new Monstre(posX1,posY1,"Monstre",10,2);
-			new Item(posX2,posY2,"baton");
-			new Pnj(posX3,posY3,"Viens deuspi", new Item(posX2, posY2,"mets toi bien"),5);
+		/*Choix au hazar de lelement monstre, pnj ou autre*/
+		int choixElement = 1 + (int)(Math.random() * ((4 - 1) + 1));
+		
+		if(choixElement == 1){
+			element = new Monstre(posX1,posY1,"Monstre",10,2);
 		}
+		if(choixElement == 2){
+			element = new Pnj(posX1,posY1,"Viens deuspi", new Item(posX1, posY1,"mets toi bien"),5);
+		}
+		if(choixElement == 3){
+			element = new Item(posX1,posY1,"La puissance");
+		}
+		if(choixElement == 4){
+			element = new Obstacle(posX1,posY1,true);
+		}
+		
+		return element;
 	}
-
 }

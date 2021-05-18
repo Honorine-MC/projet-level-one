@@ -30,7 +30,7 @@ public class Monstre extends Personnage {
 	@Override
 	/*ToString*/
 	public String toString() {
-		return "Monstre [xp_apporte=" + xp_apporte + ", degat_inflige="
+		return super.toString() + "Monstre [xp_apporte=" + xp_apporte + ", degat_inflige="
 				+ degat_inflige + "]";
 	}
 	

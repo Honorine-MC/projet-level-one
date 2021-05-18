@@ -5,7 +5,12 @@ public class Element {
 	
 	/*Constructeur*/
 	public Element(int posX, int posY){
-		this.positionX = posY;
+		this.positionX = posX;
+		this.positionY = posY;
+	}
+
+	public Element() {
+		
 	}
 
 	/*Getter et setter*/
@@ -24,6 +29,10 @@ public class Element {
 
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
+	}
+	
+	public String toTsring(){
+		return "Element de type : ";
 	}
 	
 }
