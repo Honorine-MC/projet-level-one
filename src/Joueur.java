@@ -43,5 +43,47 @@ public class Joueur extends Personnage {
 	public String toString() {
 		return "Joueur [inventaire=" + inventaire + ", xp=" + xp + ", degat="
 				+ degat + "]";
-	}	
+	}
+	
+	//permet d'avancer d'un certain nombre de case; 
+	public void avancer(int nombre){
+		this.setPosition(this.getPosition()+ nombre);
+	}
+	
+	//permet d'attaquer un monstre
+	public void attaquer(Monstre m){
+		m.setVie(m.getVie()-this.getDegat());
+	}
+	
+	//prendre un item à un pnj
+	public void prendre(Pnj pnj){
+		this.inventaire.add(pnj.getItem());	
+	}
+	
+	//ramasser un item qui est au sol 
+	public void ramasser(Item i){
+		this.inventaire.add(i);
+	}
+	
+	//utiliser un item de son inventaire.
+	public void utiliser(Item i){
+		if( i instanceof Arme){
+			Arme a = (Arme)i;
+			this.inventaire.remove(i);
+			this.setDegat(a.getDegat_apporte());
+		}
+		else if ( i instanceof Potion){
+			Potion p = (Potion)i;
+			this.inventaire.remove(i);
+			this.setVie(p.getVie_apporte());
+		}
+		else{
+			System.out.println("error"); // créer une exception
+		}		
+	}
+	
+	//ranger l'arme dans son inventaire.	
+	public void ranger(Arme a){
+		this.ramasser(a);
+	}
 }

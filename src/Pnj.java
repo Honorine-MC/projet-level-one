@@ -1,22 +1,22 @@
 
 public class Pnj extends Personnage{
-	private Item i;
+	private Item item;
 	private double xp_apporte;
 	
 	/*Constructeur*/
 	public Pnj(int position, String nom,Item i, double xp_apporte){
 	  super(position,nom,10);
-	  this.i = i;
+	  this.item = i;
 	  this.xp_apporte = xp_apporte;
 	}
 
 	/*Getter et setter*/
-	public Item getI() {
-		return i;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setI(Item i) {
-		this.i = i;
+	public void setItem(Item i) {
+		this.item = i;
 	}
 
 	public double getXp_apporte() {
@@ -30,7 +30,7 @@ public class Pnj extends Personnage{
 	/*ToString*/
 	@Override
 	public String toString() {
-		return "Pnj [i=" + i + ", xp_apporte=" + xp_apporte + "]";
+		return "Pnj [i=" + item + ", xp_apporte=" + xp_apporte + "]";
 	}
 	
 }
