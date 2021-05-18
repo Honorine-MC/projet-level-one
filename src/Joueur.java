@@ -86,4 +86,8 @@ public class Joueur extends Personnage {
 	public void ranger(Arme a){
 		this.ramasser(a);
 	}
+	
+	public void ouvrirPorte(Porte p) {
+		p.setOuvert(true);
+	}
 }
