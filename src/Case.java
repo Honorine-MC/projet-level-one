@@ -1,13 +1,16 @@
 
 public class Case {
 	private Element element;
-	private int position ;
+	private int positionX ;
+	private int positionY ;
 	
 	/*Constructeur*/
-	public Case(Element e, int pos){
+	public Case(Element e, int posX, int posY){
 		this.element = e;
-		this.position = pos;
-		this.element.setPosition(this.getPosition());
+		this.positionX = posX;
+		this.positionY = posY;
+		this.element.setPositionX(this.getPositionX());
+		this.element.setPositionY(this.getPositionY());
 		
 	}
 	
@@ -20,12 +23,20 @@ public class Case {
 		this.element = element;
 	}
 
-	public int getPosition() {
-		return position;
+	public int getPositionX() {
+		return positionX;
 	}
 
-	public void setPosition(int position) {
-		this.position = position;
+	public void setPositionX(int positionX) {
+		this.positionX = positionX;
+	}
+
+	public int getPositionY() {
+		return positionY;
+	}
+
+	public void setPositionY(int positionY) {
+		this.positionY = positionY;
 	}
 
 	/*toString*/

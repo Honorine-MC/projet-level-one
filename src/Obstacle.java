@@ -2,8 +2,8 @@ public class Obstacle extends Element {
 	private boolean ouvert;
 	
 	/*Constructor*/
-	public Obstacle(int pos, boolean ouvert){
-		super(pos);
+	public Obstacle(int posX, int posY, boolean ouvert){
+		super(posX, posY);
 		this.ouvert = ouvert;
 	}
 	

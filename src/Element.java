@@ -1,19 +1,29 @@
 
 public class Element {
-	private int position;
+	private int positionX;
+	private int positionY;
 	
 	/*Constructeur*/
-	public Element(int pos){
-		this.position = pos;
+	public Element(int posX, int posY){
+		this.positionX = posY;
 	}
 
 	/*Getter et setter*/
-	public int getPosition() {
-		return position;
+	public int getPositionX() {
+		return positionX;
 	}
 
-	public void setPosition(int position) {
-		this.position = position;
+	public void setPositionX(int positionX) {
+		this.positionX = positionX;
+	}
+	
+	/*Getter et setter*/
+	public int getPositionY() {
+		return positionY;
+	}
+
+	public void setPositionY(int positionY) {
+		this.positionY = positionY;
 	}
 	
 }

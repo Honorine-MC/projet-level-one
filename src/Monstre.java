@@ -4,8 +4,8 @@ public class Monstre extends Personnage {
 	private double degat_inflige;
 	
 	/*Constructeur*/
-	public Monstre(int position,String nom, double xp_apporte, double degat_inflige){
-		super(position,nom,10);
+	public Monstre(int posX, int posY,String nom, double xp_apporte, double degat_inflige){
+		super(posX, posY,nom,10);
 		this.xp_apporte =xp_apporte;
 		this.degat_inflige = degat_inflige;
 	}

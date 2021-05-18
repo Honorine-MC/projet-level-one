@@ -2,8 +2,8 @@
 public class Porte extends Obstacle {
 
 	/*Constructor*/
-	public Porte (int pos, boolean estOuvert) {
-		super(pos,estOuvert);
+	public Porte (int posX, int posY, boolean estOuvert) {
+		super(posX, posY,estOuvert);
 		}
 }
 

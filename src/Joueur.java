@@ -7,7 +7,7 @@ public class Joueur extends Personnage {
 	
 	//constructeur
 	public Joueur(String nom,double vie,double degat) {
-		super(0,nom,vie);
+		super(0,0,nom,vie);
 		inventaire = new ArrayList<Item>();
 		this.xp = 0;
 		this.degat = degat;
@@ -46,9 +46,9 @@ public class Joueur extends Personnage {
 	}
 	
 	//permet d'avancer d'un certain nombre de case; 
-	public void avancer(int nombre){
-		this.setPosition(this.getPosition()+ nombre);
-	}
+//	public void avancer(int nombre){
+//		this.setPositionX(this.getPositionX()+ nombre);
+//	}
 	
 	//permet d'attaquer un monstre
 	public void attaquer(Monstre m){

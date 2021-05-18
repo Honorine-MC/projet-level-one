@@ -6,8 +6,8 @@ public class Pnj extends Personnage{
 	private double xp_apporte;
 	
 	/*Constructeur*/
-	public Pnj(int position, String nom,Item i, double xp_apporte){
-	  super(position,nom,10);
+	public Pnj(int posX, int posY, String nom,Item i, double xp_apporte){
+	  super(posX, posY,nom,10);
 	  this.item = i;
 	  this.xp_apporte = xp_apporte;
 	}
