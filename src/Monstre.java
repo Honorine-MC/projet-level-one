@@ -34,4 +34,8 @@ public class Monstre extends Personnage {
 				+ degat_inflige + "]";
 	}
 	
+	public void attaquer( Joueur j){
+		j.setVie(j.getVie()-this.getDegat_inflige());
+	}
+	
 }
