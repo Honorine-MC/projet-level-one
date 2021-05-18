@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public class Pnj extends Personnage{
 	private Item item;
@@ -31,6 +33,12 @@ public class Pnj extends Personnage{
 	@Override
 	public String toString() {
 		return "Pnj [i=" + item + ", xp_apporte=" + xp_apporte + "]";
+	}
+	
+	public void donnerUnItem(Item i, Joueur j) {
+		ArrayList<Item> inventaire = j.getInventaire();
+		inventaire.add(this.getItem());	
+		j.setInventaire(inventaire);
 	}
 	
 }
