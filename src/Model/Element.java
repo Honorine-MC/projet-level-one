@@ -1,6 +1,8 @@
 package Model;
 
-public class Element {
+import java.util.Observable;
+
+public class Element extends Observable{
 	private int positionX;
 	private int positionY;
 	

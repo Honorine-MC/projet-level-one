@@ -91,4 +91,11 @@ public class Joueur extends Personnage {
 	public void ouvrirPorte(Porte p) {
 		p.setOuvert(true);
 	}
+	
+	public void avancer(){
+		System.out.println();
+		
+		//appeler setChange
+		//Appeler NotifyObserver
+	}
 }
