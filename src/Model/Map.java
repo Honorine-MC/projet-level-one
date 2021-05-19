@@ -16,14 +16,14 @@ public class Map {
 	}
 	
 	/**
-	 * Method : void -> Initialise une Map en placeant différents élements
+	 * Method : void -> Initialise une Map en placeant différents élements au Hazar
 	 */
-	public void init(){
+	public void initHazar(){
 		/*On place les case vide avec leur positions*/
 		System.out.println();
 		for(int i = 0; i<nbLig; i++) {
 			for(int j = 0; j<nbCol; j++) {
-				Element e = this.add();
+				Element e = this.addHazar();
 				this.plateau[i][j] = new Case(e,i,j);
 			}
 		}
@@ -35,25 +35,58 @@ public class Map {
 	}
 	
 	/**
+	 * Method : void -> Initialise une Map en placeant différents élements à la main
+	 */
+	public void init(){
+		/*On place les case vide avec leur positions*/
+		System.out.println();
+		for(int i = 0; i<nbLig; i++) {
+			for(int j = 0; j<nbCol; j++) {
+				this.plateau[i][j] = new Case(null,i,j);
+			}
+		}
+		/*On place le joueur au debut de la Map*/
+		Joueur player = new Joueur("Riyad Mahrez",10,2);
+		this.plateau[0][0].setElement(player);
+		
+		/*Placement des murs*/
+		Obstacle mur1 = new Mur(0,3,false);
+		this.plateau[0][3].setElement(mur1);
+		Obstacle mur2 = new Mur(0,3,false);
+		this.plateau[2][3].setElement(mur2);
+		
+		/*Placement des portes*/
+		
+		/*Placement des monstres*/
+		
+		/*Placement des PNJ*/
+		
+		/*Placement des ITEM*/
+	}
+	
+	/**
 	 * Function -> Affichage console de la map
 	 */
 	public void affiche(){
 		for(int i =0; i<this.nbLig ; i++){
 			for(int j=0; j<this.nbCol; j++){
 				if(this.plateau[i][j].getElement() instanceof Monstre){
-					System.out.print(" | " + "Monstre");
+					System.out.print(" | " + "M");
 				}
 				if(this.plateau[i][j].getElement() instanceof Pnj){
-					System.out.print(" | " + "Bicraveur");
+					System.out.print(" | " + "P");
 				}
 				if(this.plateau[i][j].getElement() instanceof Item){
-					System.out.print(" | " + "du biff");
+					System.out.print(" | " + "I");
 				}
 				if(this.plateau[i][j].getElement() instanceof Joueur){
-					System.out.print(" | " + "Mahrez");
+					System.out.print(" | " + "J");
 				}
 				if(this.plateau[i][j].getElement() instanceof Obstacle){
-					System.out.print(" | " + "Obstacle");
+					System.out.print(" | " + "O");
+				}
+				if(this.plateau[i][j].getElement() == null){
+					System.out.print(" | " + " ");
 				}
 			}
 			System.out.println("|");
@@ -64,7 +97,7 @@ public class Map {
 	/** Function :
 	 * @return : Renvoi un element au hazar -> Un monstre un pnj ou un item..etc
 	 */
-	public Element add() {
+	public Element addHazar() {
 		
 		Element element = new Element() ;	
 		/*Position aléatoire de lelement dans les limites de la map*/

@@ -1,12 +1,12 @@
 package Model;
 
-public class Mur {
+public class Mur extends Obstacle {
 
 
 	
 	/*Constructor*/
-public Mur (){
-	
+public Mur (int posX, int posY, boolean estOuvert){
+	super(posX,posY,estOuvert);
 }
 	
 }
