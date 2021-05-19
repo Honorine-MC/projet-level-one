@@ -1,3 +1,5 @@
+package Model;
+
 
 public class Personnage extends Element{
 	private String nom;

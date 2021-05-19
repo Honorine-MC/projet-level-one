@@ -1,3 +1,5 @@
+package Model;
+
 
 public class Potion extends Item {
 	private double vie_apporte;

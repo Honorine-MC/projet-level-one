@@ -1,3 +1,5 @@
+package Model;
+
 public class Obstacle extends Element {
 	private boolean ouvert;
 	

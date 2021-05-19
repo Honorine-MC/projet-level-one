@@ -1,3 +1,4 @@
+package Model;
 
 public class Element {
 	private int positionX;

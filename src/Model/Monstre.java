@@ -1,3 +1,5 @@
+package Model;
+
 
 public class Monstre extends Personnage {
 	private double xp_apporte;

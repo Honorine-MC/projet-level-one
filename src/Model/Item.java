@@ -1,3 +1,5 @@
+package Model;
+
 
 public class Item extends Element{
 	private String nom;
