@@ -123,7 +123,7 @@ public class Map {
 		Personnage monstre3 = new Monstre(7,1,"Hisoka",10,2);
 		this.plateau[7][1].setElement(monstre3);
 		
-		/*Placement des ITEM*/
+		/*Placement des ITEM */
 		Item potion1 = new Potion(5,3,"popo",10);
 		this.plateau[5][3].setElement(potion1);
 		
