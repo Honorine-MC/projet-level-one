@@ -119,7 +119,7 @@ public class Map {
 		Personnage monstre1 = new Monstre(4,5,"Muzan",10,2);
 		this.plateau[4][5].setElement(monstre1);
 		Personnage monstre2 = new Monstre(4,7,"Akaza",10,2);
-		this.plateau[4][7].setElement(monstre2);
+		this.plateau[3][7].setElement(monstre2);
 		Personnage monstre3 = new Monstre(7,1,"Hisoka",10,2);
 		this.plateau[7][1].setElement(monstre3);
 		
@@ -138,8 +138,6 @@ public class Map {
 		Personnage pnj3 = new Pnj(4,7,"Gojo",potion1,10);
 		this.plateau[4][7].setElement(pnj3);
 		
-		
-		
 	}
 	
 	/**
@@ -149,41 +147,41 @@ public class Map {
 		for(int i =0; i<this.nbLig ; i++){
 			for(int j=0; j<this.nbCol; j++){
 				if(this.plateau[i][j].getElement() instanceof Monstre){
-					System.out.print(" | " + "M");
+					System.out.print(" | " + "Mon");
 				}
 				if(this.plateau[i][j].getElement() instanceof Pnj){
-					System.out.print(" | " + "P");
+					System.out.print(" | " + "pnj");
 				}
 				if(this.plateau[i][j].getElement() instanceof Item){
-					System.out.print(" | " + "I");
+					System.out.print(" | " + "Ite");
 				}
 				if(this.plateau[i][j].getElement() instanceof Joueur){
-					System.out.print(" | " + "J");
+					System.out.print(" | " + "Toi");
 				}
-				if(this.plateau[i][j].getElement() instanceof Obstacle){
-					System.out.print(" | " + "O");
+				if(this.plateau[i][j].getElement() instanceof Mur){
+					System.out.print(" | " + "Mur");
 					
 				}
 					
 				if(this.plateau[i][j].getElement() instanceof Porte){
-						System.out.print(" | " + "PR");
+						System.out.print(" | " + "Por");
 				}
 				
 				if(this.plateau[i][j].getElement() instanceof Potion){
-					System.out.print(" | " + "PO");
+					System.out.print(" | " + "Pot");
 					
 				}
 				
 				if(this.plateau[i][j].getElement() instanceof Arme){
-					System.out.print(" | " + "AR");
+					System.out.print(" | " + "Arm");
 					
 				}
 				
 				if(this.plateau[i][j].getElement() == null){
-					System.out.print(" | " + " ");
+					System.out.print(" | " + "   ");
 				}
 			}
-			System.out.println("|");
+			System.out.println(" | ");
 		}
 		System.out.println();
 	}

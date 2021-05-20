@@ -11,8 +11,8 @@ public class Case {
 		this.element = e;
 		this.positionX = posX;
 		this.positionY = posY;
-		this.element.setPositionX(this.getPositionX());
-		this.element.setPositionY(this.getPositionY());
+		//this.element.setPositionX(this.getPositionX());
+		//this.element.setPositionY(this.getPositionY());
 		
 	}
 	
