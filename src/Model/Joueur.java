@@ -92,9 +92,9 @@ public class Joueur extends Personnage {
 		p.setOuvert(true);
 	}
 	
-	public void avancer(){
-		System.out.println();
-		
+	public void avancer(int x, int y){
+		this.setPositionX(x);
+		this.setPositionY(y);
 		//appeler setChange
 		//Appeler NotifyObserver
 	}

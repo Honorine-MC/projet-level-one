@@ -23,6 +23,8 @@ public class Element extends Observable{
 
 	public void setPositionX(int positionX) {
 		this.positionX = positionX;
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	/*Getter et setter*/
@@ -32,6 +34,8 @@ public class Element extends Observable{
 
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public String toTsring(){

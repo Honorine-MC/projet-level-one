@@ -36,8 +36,23 @@ public class Monstre extends Personnage {
 				+ degat_inflige + "]";
 	}
 	
+	/**
+	 * Function -> Attaquer un joueur
+	 * @param j : represente le joueur attaqué
+	 */
 	public void attaquer( Joueur j){
 		j.setVie(j.getVie()-this.getDegat_inflige());
+	}
+	
+	/**
+	 * Function : boolean -> Renvois true si le monstre est battu
+	 */
+	public boolean estVaincu(){
+		boolean res = false;
+		if(this.getVie()==0){
+			res = true;
+		}
+		return res;
 	}
 	
 }

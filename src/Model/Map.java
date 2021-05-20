@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Map {
 	
 	/*Attributs*/
+	public Joueur joueur;
 	public int nbLig;
 	public int nbCol;
 	public Case [][] plateau;
@@ -15,24 +16,6 @@ public class Map {
 		this.plateau = new Case[nbLig][nbCol];
 	}
 	
-	/**
-	 * Method : void -> Initialise une Map en placeant différents élements au Hazar
-	 */
-	public void initHazar(){
-		/*On place les case vide avec leur positions*/
-		System.out.println();
-		for(int i = 0; i<nbLig; i++) {
-			for(int j = 0; j<nbCol; j++) {
-				Element e = this.addHazar();
-				this.plateau[i][j] = new Case(e,i,j);
-			}
-		}
-		/*On place le joueur au debut de la Map*/
-		Joueur player = new Joueur("Riyad Mahrez",10,2);
-		player.setPositionX(0);
-		player.setPositionY(0);
-		this.plateau[0][0].setElement(player);
-	}
 	
 	/**
 	 * Method : void -> Initialise une Map en placeant différents élements à la main
@@ -46,8 +29,8 @@ public class Map {
 			}
 		}
 		/*On place le joueur au debut de la Map*/
-		Joueur player = new Joueur("Riyad Mahrez",0,0);
-		this.plateau[0][0].setElement(player);
+		this.joueur = new Joueur("Riyad Mahrez",0,0);
+		this.plateau[0][0].setElement(this.joueur);
 		
 		/*Placement des murs*/
 		Obstacle mur1 = new Mur(0,1,false);
@@ -184,6 +167,66 @@ public class Map {
 			System.out.println(" | ");
 		}
 		System.out.println();
+	}
+	
+	/**
+	 * Function -> Autorise au non un deplacement du joueur
+	 */
+	public boolean deplacement_valide(int x, int y){
+		boolean res = true;
+		/*On verifie si la porte ou le mur est traversable*/
+		if(this.plateau[x][y].getElement() instanceof Mur || this.plateau[x][y].getElement() instanceof Porte){
+			Obstacle o = (Obstacle)this.plateau[x][y].getElement();
+			if(!o.isOuvert()){
+				res = false;
+			}
+		}
+		/*On verifie si le monstre a été battu*/
+		if(this.plateau[x][y].getElement() instanceof Monstre){
+			Monstre m = (Monstre)this.plateau[x][y].getElement();
+			if(!m.estVaincu()){
+				res=false;
+			}
+		}
+		return res;
+	}
+	
+	/**
+	 * Function -> Déplace le joueur et met à jour la Map
+	 */
+	public void deplacerJoueur(int x, int y){
+		if(this.deplacement_valide(x, y)){
+			/*On recupere la position actuelle du joueur*/
+			int currentPositionX = this.joueur.getPositionX();
+			int currentPositionY = this.joueur.getPositionY();
+			/*Mise a jour de la map*/
+			this.plateau[currentPositionX][currentPositionY].setElement(null);
+			this.joueur.avancer(x, y);//deplacement joueur
+			this.plateau[x][y].setElement(this.joueur);
+		}
+		else{
+			System.out.println("Deplacement invalide");
+		}
+		
+	}
+	
+	/**
+	 * Method : void -> Initialise une Map en placeant différents élements au Hazar
+	 */
+	public void initHazar(){
+		/*On place les case vide avec leur positions*/
+		System.out.println();
+		for(int i = 0; i<nbLig; i++) {
+			for(int j = 0; j<nbCol; j++) {
+				Element e = this.addHazar();
+				this.plateau[i][j] = new Case(e,i,j);
+			}
+		}
+		/*On place le joueur au debut de la Map*/
+		this.joueur = new Joueur("Riyad Mahrez",10,2);
+		this.joueur.setPositionX(0);
+		this.joueur.setPositionY(0);
+		this.plateau[0][0].setElement(this.joueur);
 	}
 	
 	/** Function :
