@@ -4,7 +4,7 @@ package Model;
 public class Arme extends Item{
 	private double degat_apporte;
 	
-	//COnstructeur
+	//Constructeur
 	public Arme(int posX, int posY, String nom, double degat_apporte){
 		super(posX, posY,nom);
 		this.degat_apporte=degat_apporte;

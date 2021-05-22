@@ -29,8 +29,8 @@ public class Map {
 			}
 		}
 		/*On place le joueur au debut de la Map*/
-		this.joueur = new Joueur("Riyad Mahrez",0,0);
-		this.plateau[0][0].setElement(this.joueur);
+		this.joueur = new Joueur("Riyad Mahrez",3,3);
+		this.plateau[3][3].setElement(this.joueur);
 		
 		/*Placement des murs*/
 		Obstacle mur1 = new Mur(0,1,false);
@@ -80,18 +80,18 @@ public class Map {
 		Obstacle mur23 = new Mur(6,6,false);
 		this.plateau[6][6].setElement(mur23);
 		Obstacle mur24 = new Mur(7,0,false);
-		this.plateau[7][0].setElement(mur23);
+		this.plateau[7][0].setElement(mur24);
 		Obstacle mur25 = new Mur(7,1,false);
-		this.plateau[7][1].setElement(mur23);
+		this.plateau[7][1].setElement(mur25);
 		Obstacle mur26 = new Mur(7,3,false);
-		this.plateau[7][3].setElement(mur23);
+		this.plateau[7][3].setElement(mur26);
 		Obstacle mur27 = new Mur(7,5,false);
-		this.plateau[7][5].setElement(mur23);
+		this.plateau[7][5].setElement(mur27);
 		Obstacle mur28 = new Mur(7,6,false);
-		this.plateau[7][6].setElement(mur23);
+		this.plateau[7][6].setElement(mur28);
 		
 		/*Placement des portes*/
-		Obstacle porte1 = new Porte(1,3,false);
+		Obstacle porte1 = new Porte(1,3,true);
 		this.plateau[1][3].setElement(porte1);
 		Obstacle porte2 = new Porte(2,1,false);
 		this.plateau[2][1].setElement(porte2);
@@ -108,10 +108,10 @@ public class Map {
 		
 		/*Placement des ITEM*/
 		Item potion1 = new Potion(5,3,"popo",10);
-		this.plateau[5][3].setElement(potion1);
+//		this.plateau[5][3].setElement(potion1);
 		
 		Item arme1 = new Arme(6,0,"arc",5);
-		this.plateau[6][0].setElement(arme1);
+//		this.plateau[6][0].setElement(arme1);
 		
 		/*Placement des PNJ*/
 		Personnage pnj1 = new Pnj(0,3,"a",arme1,10);
@@ -143,23 +143,16 @@ public class Map {
 				}
 				if(this.plateau[i][j].getElement() instanceof Mur){
 					System.out.print(" | " + "Mur");
-					
 				}
-					
 				if(this.plateau[i][j].getElement() instanceof Porte){
-						System.out.print(" | " + "Por");
+					System.out.print(" | " + "Por");
 				}
-				
 				if(this.plateau[i][j].getElement() instanceof Potion){
-					System.out.print(" | " + "Pot");
-					
+					System.out.print(" | " + "Pot");	
 				}
-				
 				if(this.plateau[i][j].getElement() instanceof Arme){
-					System.out.print(" | " + "Arm");
-					
+					System.out.print(" | " + "Arm");	
 				}
-				
 				if(this.plateau[i][j].getElement() == null){
 					System.out.print(" | " + "   ");
 				}
@@ -179,6 +172,7 @@ public class Map {
 			Obstacle o = (Obstacle)this.plateau[x][y].getElement();
 			if(!o.isOuvert()){
 				res = false;
+				System.out.println("Vous ne pouvez pas passer cet obstacle !");
 			}
 		}
 		/*On verifie si le monstre a été battu*/
@@ -209,6 +203,64 @@ public class Map {
 		}
 		
 	}
+	
+	public void deplaceJoueur(int deplace) {
+		int currentPositionX = this.joueur.getPositionX();
+		int currentPositionY = this.joueur.getPositionY();
+		switch (deplace) {
+		case 8 :
+			if(currentPositionX != 0 ) {
+				if(this.deplacement_valide(currentPositionX-1, currentPositionY)) {
+					this.plateau[currentPositionX][currentPositionY].setElement(null);
+					this.joueur.avancer(currentPositionX-1, currentPositionY);//deplacement joueur
+					this.plateau[currentPositionX-1][currentPositionY].setElement(this.joueur);
+				}
+			}
+			else {
+				System.out.println("Vous ne pouvez pas vous déplacer vers le haut !");
+			}
+		break;
+		case 2 :
+			if(currentPositionX != 7) {
+				if(this.deplacement_valide(currentPositionX+1, currentPositionY)) {
+					this.plateau[currentPositionX][currentPositionY].setElement(null);
+					this.joueur.avancer(currentPositionX+1, currentPositionY);//deplacement joueur
+					this.plateau[currentPositionX+1][currentPositionY].setElement(this.joueur);
+				}
+			}
+			else {
+				System.out.println("Vous ne pouvez pas vous déplacer vers le bas !");
+			}
+		break;
+		case 6 :
+			if(currentPositionY != 7) {
+				if(this.deplacement_valide(currentPositionX, currentPositionY+1)) {
+					this.plateau[currentPositionX][currentPositionY].setElement(null);
+					this.joueur.avancer(currentPositionX, currentPositionY+1);//deplacement joueur
+					this.plateau[currentPositionX][currentPositionY+1].setElement(this.joueur);
+				}
+			}
+			else {
+				System.out.println("Vous ne pouvez pas vous déplacer vers la droite !");
+			}
+		break;
+		case 4 :
+			if(currentPositionY != 0) {
+				if(this.deplacement_valide(currentPositionX, currentPositionY-1)) {
+					this.plateau[currentPositionX][currentPositionY].setElement(null);
+					this.joueur.avancer(currentPositionX, currentPositionY-1);//deplacement joueur
+					this.plateau[currentPositionX][currentPositionY-1].setElement(this.joueur);
+				}
+			}
+			else {
+				System.out.println("Vous ne pouvez pas vous déplacer vers la gauche !");
+			}
+		break;
+		default :
+			System.out.println("Vers où voulez-vous vous déplacer ? (6 = droite, 4 = gauche, 2 = bas, 8 = haut");
+		}
+	}
+	
 	
 	/**
 	 * Method : void -> Initialise une Map en placeant différents élements au Hazar
