@@ -3,16 +3,22 @@ package Controller;
 import java.util.Observable;
 import java.util.Observer;
 
+import Model.Joueur;
+import Model.Map;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import Model.Joueur;
 
-public class JoueurController implements EventHandler<KeyEvent>, Observer{
-	private Joueur j;
-	public JoueurController(Joueur j, String image){ /* 2eme PAram : ImageView joueurIHM*/
-		this.j = j;
+public class MapController implements EventHandler<KeyEvent>, Observer{
+	private Map map;
+	private Joueur joueur;
+	private String imageJoueur;
+	public MapController(Map m){
+		this.map = m;
+//		this.joueur=j;
+//		this.imageJoueur = imageJoueur;
 	}
-
+	
+	
 	public void update(Observable arg0, Object arg1) {
 		// TODO mise des coordonnees de l'IMage View
 		
@@ -22,4 +28,5 @@ public class JoueurController implements EventHandler<KeyEvent>, Observer{
 		// TODO methode equivalent de change (press clavier)
 		
 	}
+
 }

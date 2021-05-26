@@ -1,7 +1,8 @@
 package Model;
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Map {
+public class Map extends Observable{
 	
 	/*Attributs*/
 	public Joueur joueur;
@@ -215,6 +216,8 @@ public class Map {
 					this.plateau[currentPositionX][currentPositionY].setElement(null);
 					this.joueur.avancer(currentPositionX-1, currentPositionY);//deplacement joueur
 					this.plateau[currentPositionX-1][currentPositionY].setElement(this.joueur);
+					this.setChanged();
+					this.notifyObservers();
 				}
 			}
 			else {
@@ -227,6 +230,8 @@ public class Map {
 					this.plateau[currentPositionX][currentPositionY].setElement(null);
 					this.joueur.avancer(currentPositionX+1, currentPositionY);//deplacement joueur
 					this.plateau[currentPositionX+1][currentPositionY].setElement(this.joueur);
+					this.setChanged();
+					this.notifyObservers();
 				}
 			}
 			else {
@@ -239,6 +244,8 @@ public class Map {
 					this.plateau[currentPositionX][currentPositionY].setElement(null);
 					this.joueur.avancer(currentPositionX, currentPositionY+1);//deplacement joueur
 					this.plateau[currentPositionX][currentPositionY+1].setElement(this.joueur);
+					this.setChanged();
+					this.notifyObservers();
 				}
 			}
 			else {
@@ -251,6 +258,8 @@ public class Map {
 					this.plateau[currentPositionX][currentPositionY].setElement(null);
 					this.joueur.avancer(currentPositionX, currentPositionY-1);//deplacement joueur
 					this.plateau[currentPositionX][currentPositionY-1].setElement(this.joueur);
+					this.setChanged();
+					this.notifyObservers();
 				}
 			}
 			else {
@@ -262,52 +271,4 @@ public class Map {
 		}
 	}
 	
-	
-	/**
-	 * Method : void -> Initialise une Map en placeant différents élements au Hazar
-	 */
-	public void initHazar(){
-		/*On place les case vide avec leur positions*/
-		System.out.println();
-		for(int i = 0; i<nbLig; i++) {
-			for(int j = 0; j<nbCol; j++) {
-				Element e = this.addHazar();
-				this.plateau[i][j] = new Case(i,j,e);
-			}
-		}
-		/*On place le joueur au debut de la Map*/
-		this.joueur = new Joueur("Riyad Mahrez",10,2);
-		this.joueur.setPositionX(0);
-		this.joueur.setPositionY(0);
-		this.plateau[0][0].setElement(this.joueur);
-	}
-	
-	/** Function :
-	 * @return : Renvoi un element au hazar -> Un monstre un pnj ou un item..etc
-	 */
-	public Element addHazar() {
-		
-		Element element = new Element() ;	
-		/*Position aléatoire de lelement dans les limites de la map*/
-		int posX1 = 1 + (int)(Math.random() * (((nbLig-1) - 0) + 1));
-		int posY1 = 1 + (int)(Math.random() * (((nbCol-1)- 0) + 1));
-		
-		/*Choix au hazar de lelement monstre, pnj ou autre*/
-		int choixElement = 1 + (int)(Math.random() * ((4 - 1) + 1));
-		
-		if(choixElement == 1){
-			element = new Monstre(posX1,posY1,"Monstre",10,2);
-		}
-		if(choixElement == 2){
-			element = new Pnj(posX1,posY1,"Viens deuspi", new Item(posX1, posY1,"mets toi bien"),5);
-		}
-		if(choixElement == 3){
-			element = new Item(posX1,posY1,"La puissance");
-		}
-		if(choixElement == 4){
-			element = new Obstacle(posX1,posY1,true);
-		}
-		
-		return element;
-	}
 }

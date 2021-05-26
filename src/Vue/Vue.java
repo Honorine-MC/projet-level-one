@@ -3,6 +3,7 @@ package Vue;
 import java.awt.Label;
 import java.util.ArrayList;
 
+import Controller.MapController;
 import Model.Case;
 import Model.Element;
 import Model.Item;
@@ -97,11 +98,15 @@ public class Vue extends Application{
 				}
 			}
 			
+			/*Controller*/
+			MapController mc = new MapController(this.map);
+			this.map.addObserver(mc);
+			//this.addListner(mc);
+			
 			
 			primaryStage.setTitle("LEVEL ONE");
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
 			
 		}
 		catch(Exception e){
@@ -120,5 +125,5 @@ public class Vue extends Application{
 	
 	//j.addObserver(jc);
 	
-	//this.addListner(jc);
+	//this.addListner(mc);
 }
