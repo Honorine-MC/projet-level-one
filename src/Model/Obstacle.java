@@ -4,8 +4,8 @@ public class Obstacle extends Element {
 	private boolean ouvert;
 	
 	/*Constructor*/
-	public Obstacle(int posX, int posY, boolean ouvert){
-		super(posX, posY);
+	public Obstacle(int posX, int posY,String image,boolean ouvert){
+		super(posX, posY,image);
 		this.ouvert = ouvert;
 	}
 	

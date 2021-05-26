@@ -6,7 +6,7 @@ public class Arme extends Item{
 	
 	//Constructeur
 	public Arme(int posX, int posY, String nom, double degat_apporte){
-		super(posX, posY,nom);
+		super(posX, posY,"Vue/arme.png",nom);
 		this.degat_apporte=degat_apporte;
 	}
 

@@ -8,7 +8,7 @@ public class Pnj extends Personnage{
 	
 	/*Constructeur*/
 	public Pnj(int posX, int posY, String nom,Item i, double xp_apporte){
-	  super(posX,posY,nom,10);
+	  super(posX,posY,"Vue/pnj.png",nom,10);
 	  this.item = i;
 	  this.xp_apporte = xp_apporte;
 	}

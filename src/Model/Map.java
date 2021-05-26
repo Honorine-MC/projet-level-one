@@ -25,7 +25,7 @@ public class Map {
 		System.out.println();
 		for(int i = 0; i<nbLig; i++) {
 			for(int j = 0; j<nbCol; j++) {
-				this.plateau[i][j] = new Case(null,i,j);
+				this.plateau[i][j] = new Case(i,j,null);
 			}
 		}
 		/*On place le joueur au debut de la Map*/
@@ -120,6 +120,7 @@ public class Map {
 		this.plateau[0][5].setElement(pnj2);
 		Personnage pnj3 = new Pnj(4,7,"Gojo",potion1,10);
 		this.plateau[4][7].setElement(pnj3);
+		
 		
 	}
 	
@@ -271,7 +272,7 @@ public class Map {
 		for(int i = 0; i<nbLig; i++) {
 			for(int j = 0; j<nbCol; j++) {
 				Element e = this.addHazar();
-				this.plateau[i][j] = new Case(e,i,j);
+				this.plateau[i][j] = new Case(i,j,e);
 			}
 		}
 		/*On place le joueur au debut de la Map*/

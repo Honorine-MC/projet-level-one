@@ -5,17 +5,19 @@ import java.util.Observable;
 public class Element extends Observable{
 	private int positionX;
 	private int positionY;
+	private String image;
+
 	
 	/*Constructeur*/
-	public Element(int posX, int posY){
+	public Element(int posX, int posY,String image){
 		this.positionX = posX;
 		this.positionY = posY;
+		this.image = image;
 	}
 
-	public Element() {
+	public Element(){
 		
 	}
-
 	/*Getter et setter*/
 	public int getPositionX() {
 		return positionX;
@@ -36,6 +38,10 @@ public class Element extends Observable{
 		this.positionY = positionY;
 		this.setChanged();
 		this.notifyObservers();
+	}
+	
+	public String getImage(){
+		return image;
 	}
 	
 	public String toTsring(){

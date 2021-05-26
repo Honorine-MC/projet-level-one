@@ -6,7 +6,7 @@ public class Potion extends Item {
 	
 	//Constructeur
 	public Potion(int posX, int posY, String nom,double vie_apporte){
-		super(posX, posY,nom);
+		super(posX, posY,"Vue/potion.png",nom);
 		this.vie_apporte = vie_apporte;		
 	}
 

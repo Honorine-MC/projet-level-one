@@ -1,20 +1,28 @@
 package Model;
 
-
-public class Case {
-	private Element element;
+public class Case{
+	
 	private int positionX ;
 	private int positionY ;
 	
-	/*Constructeur*/
-	public Case(Element e, int posX, int posY){
-		this.element = e;
+	private Element element;
+	
+	/*Constructeurs*/
+	
+	public Case(int x, int y){
+		this.positionX = x;
+		this.positionY = y;
+		this.element = null;
+	}
+	
+	
+	public Case(int posX, int posY, Element e){
 		this.positionX = posX;
 		this.positionY = posY;
-		//this.element.setPositionX(this.getPositionX());
-		//this.element.setPositionY(this.getPositionY());
-		
+		this.element = e;
 	}
+	
+
 	
 	/*Getter setter*/
 	public Element getElement() {

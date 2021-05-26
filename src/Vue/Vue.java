@@ -1,16 +1,60 @@
 package Vue;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
-import Model.Joueur;
+import Model.Case;
+import Model.Element;
 import Model.Map;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
 public class Vue extends Application{
 	private Map map = new Map(8,8);
 	
 	@Override
-	public void start(Stage stage) throws Exception{
-		
+	public void start(Stage primaryStage) throws Exception{
+		try{
+			VBox root = new VBox();
+			Scene scene = new Scene(root,800,800);
+			scene.setFill(Color.CADETBLUE);
+			
+			GridPane plateau = new GridPane();
+			root.getChildren().add(plateau);
+			
+			map.init();
+			
+			Case[][] plateauTab = map.plateau;
+			
+			for(int i=0; i<8; i++){
+				for(int j=0; j<8;j++){
+					Rectangle carre = new Rectangle(0,0,80,80);
+					
+					carre.setFill(Color.WHITE);
+					carre.setStroke(Color.BLACK);
+									
+					if(plateauTab[i][j].getElement() instanceof Element){
+						Image image = new Image(plateauTab[i][j].getElement().getImage());
+						carre.setFill(new ImagePattern(image));
+					}
+					GridPane caseGridPane = new GridPane();
+					caseGridPane.getChildren().add(carre);
+					plateau.add(caseGridPane, i, j);
+				}
+			}
+			primaryStage.setTitle("LEVEL ONE");
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) {

@@ -6,8 +6,8 @@ public class Personnage extends Element{
 	private double vie;
 	
 	/*Constructeur*/
-	public Personnage(int posX, int posY, String nom, double vie){
-		super(posX, posY);
+	public Personnage(int posX, int posY,String image, String nom, double vie){
+		super(posX, posY,image);
 		this.nom = nom;
 		this.vie = vie;
 	}

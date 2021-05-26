@@ -7,7 +7,7 @@ public class Monstre extends Personnage {
 	
 	/*Constructeur*/
 	public Monstre(int posX, int posY,String nom, double xp_apporte, double degat_inflige){
-		super(posX, posY,nom,10);
+		super(posX, posY,"Vue/monstre.png",nom,10);
 		this.xp_apporte =xp_apporte;
 		this.degat_inflige = degat_inflige;
 	}

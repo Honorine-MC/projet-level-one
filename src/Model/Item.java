@@ -4,8 +4,8 @@ package Model;
 public class Item extends Element{
 	private String nom;
 	
-	public Item(int posX, int posY, String nom){
-		super(posX, posY);
+	public Item(int posX, int posY, String image,String nom){
+		super(posX, posY,image);
 		this.nom = nom;
 	}
 
