@@ -108,10 +108,10 @@ public class Map {
 		
 		/*Placement des ITEM*/
 		Item potion1 = new Potion(5,3,"popo",10);
-//		this.plateau[5][3].setElement(potion1);
+		this.plateau[5][3].setElement(potion1);
 		
 		Item arme1 = new Arme(6,0,"arc",5);
-//		this.plateau[6][0].setElement(arme1);
+		this.plateau[6][0].setElement(arme1);
 		
 		/*Placement des PNJ*/
 		Personnage pnj1 = new Pnj(0,3,"a",arme1,10);

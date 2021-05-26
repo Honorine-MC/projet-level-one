@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Scanner;
 public class Partie {
-
+//
 //	public static void main(String[] args) {
 //		Map map = new Map(8,8);
 //		map.init();
