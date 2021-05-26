@@ -44,6 +44,10 @@ public class Element extends Observable{
 		return image;
 	}
 	
+	public void setImage(String cheminVersImage){
+		this.image=cheminVersImage;
+	}
+	
 	public String toTsring(){
 		return "Element de type : ";
 	}
