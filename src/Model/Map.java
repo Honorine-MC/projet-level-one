@@ -31,7 +31,7 @@ public class Map extends Observable{
 		}
 		/*On place le joueur au debut de la Map*/
 		this.joueur = new Joueur("Riyad Mahrez",3,3);
-		this.plateau[3][3].setElement(this.joueur);
+		this.plateau[this.joueur.getPositionX()][this.joueur.getPositionY()].setElement(this.joueur);
 		
 		/*Placement des murs*/
 		Obstacle mur1 = new Mur(0,1,false);

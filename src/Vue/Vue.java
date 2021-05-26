@@ -10,6 +10,7 @@ import Model.Item;
 import Model.Joueur;
 import Model.Map;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +21,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -45,7 +48,8 @@ public class Vue extends Application{
 			
 			Case[][] plateauTab = map.plateau;
 			
-			
+			final Joueur joueur = map.joueur;
+		
 			for(int i=0; i<8; i++){
 				for(int j=0; j<8;j++){
 					Rectangle carre = new Rectangle(0,0,80,80);
@@ -63,12 +67,8 @@ public class Vue extends Application{
 				}
 			}
 					
-			
-			
 	
 			/* Affichage de l'inventaire*/
-
-			Joueur joueur = map.joueur;
 			GridPane inventaire = new GridPane();
 			root.getChildren().add(inventaire);
 			inventaire.setPadding(new Insets(40, 40, 40, 800));
@@ -98,6 +98,10 @@ public class Vue extends Application{
 				}
 			}
 			
+			/*Debut Partie Saleté test*/
+			
+			/*Fin Partie Saleté test*/
+			
 			/*Controller*/
 			MapController mc = new MapController(this.map);
 			this.map.addObserver(mc);
@@ -107,6 +111,19 @@ public class Vue extends Application{
 			primaryStage.setTitle("LEVEL ONE");
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+	            
+	            public void handle(KeyEvent event) {
+	                if (event.getCode() == KeyCode.RIGHT) {
+	                    System.out.println("halalaa");
+	                    map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
+	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
+	                	//primaryStage.close();
+	                }
+	            }
+	        });
 			
 		}
 		catch(Exception e){
