@@ -135,8 +135,15 @@ public class Vue extends Application{
 					text.setText(Integer.toString(i));
 					text.setFont(Font.font("Verdana",20));
 					text.setFill(Color.WHITE);
-					inventaire.add(text,i,7);
-									
+					inventaire.add(text,i,7);					
+				}
+				for(int j= joueur.getInventaire().size() ; j< 5 ; j++){
+					Rectangle carreItem = new Rectangle(0,0,30,30);
+					carreItem.setFill(Color.WHITE);
+					carreItem.setStroke(Color.BLACK); 
+					GridPane caseItem = new GridPane();
+					caseItem.getChildren().add(carreItem);
+					inventaire.add(caseItem,j,6);
 				}
 			}
 			else{

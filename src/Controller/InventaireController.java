@@ -23,12 +23,11 @@ public class InventaireController implements Observer{
 	}
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-//		System.out.println("Update Inventaire");
+		
 		/*Partie inventaire*/
 
 		if(joueur.getInventaire().size() > 0){
 			for(int i=0; i<joueur.getInventaire().size(); i++){
-				System.out.println(joueur.getInventaire().get(i));
 				Rectangle carreItem = new Rectangle(0,0,30,30);
 				carreItem.setFill(Color.WHITE);
 				carreItem.setStroke(Color.BLACK);
@@ -37,11 +36,14 @@ public class InventaireController implements Observer{
 				GridPane caseItem = new GridPane();
 				caseItem.getChildren().add(carreItem);
 				inventaire.add(caseItem,i,6);
-				Text text= new Text();
-				text.setText(Integer.toString(i));
-				text.setFont(Font.font("Verdana",20));
-				text.setFill(Color.WHITE);
-				inventaire.add(text,i,7);		
+			}
+			for(int j= joueur.getInventaire().size() ; j< 5 ; j++){
+				Rectangle carreItem = new Rectangle(0,0,30,30);
+				carreItem.setFill(Color.WHITE);
+				carreItem.setStroke(Color.BLACK); 
+				GridPane caseItem = new GridPane();
+				caseItem.getChildren().add(carreItem);
+				inventaire.add(caseItem,j,6);
 			}
 		}
 		else{
@@ -53,11 +55,6 @@ public class InventaireController implements Observer{
 				caseGridPaneNo.getChildren().add(carreNo);
 				inventaire.add(caseGridPaneNo, i, 6);
 				
-				Text text= new Text();
-				text.setText(Integer.toString(i));
-				text.setFont(Font.font("Verdana",20));
-				text.setFill(Color.WHITE);
-				inventaire.add(text,i,7);
 			}
 		}
 	}

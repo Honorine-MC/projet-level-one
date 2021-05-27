@@ -9,7 +9,7 @@ public class Joueur extends Personnage {
 	//constructeur
 	public Joueur(String nom,double vie,double degat) {
 		super(3,3,"Vue/joueur.png",nom,vie);
-		inventaire = new ArrayList<Item>(5);
+		inventaire = new ArrayList<Item>();
 		this.xp = 0;
 		this.degat = degat;
 	}
