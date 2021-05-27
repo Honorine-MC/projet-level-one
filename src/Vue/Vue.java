@@ -168,7 +168,7 @@ public class Vue extends Application{
 			}
 						
 			/*Controller*/
-			MapController mc = new MapController(plateau,this.map);
+			MapController mc = new MapController(plateau,this.map,b);
 			this.map.addObserver(mc);
 			
 			InventaireController ic = new InventaireController(inventaire,this.map.joueur);
@@ -210,9 +210,7 @@ public class Vue extends Application{
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD4){
 	                	joueur.utiliser(joueur.getInventaire().get(4));
-	                }
-	                
-	                
+	                }	                
 	            }
 	        });
 			/*Fin Partie lecture clavier*/

@@ -37,7 +37,7 @@ public class InventaireController implements Observer{
 				caseItem.getChildren().add(carreItem);
 				inventaire.add(caseItem,i,6);
 			}
-			for(int j= joueur.getInventaire().size() ; j< 5 ; j++){
+			for(int j= joueur.getInventaire().size() ; j< 5 ; j++){  
 				Rectangle carreItem = new Rectangle(0,0,30,30);
 				carreItem.setFill(Color.WHITE);
 				carreItem.setStroke(Color.BLACK); 

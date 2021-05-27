@@ -5,6 +5,7 @@ import java.util.Observer;
 
 import Model.Map;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -15,9 +16,11 @@ import javafx.scene.text.Text;
 public class MapController implements Observer{
 	Map map;
 	private GridPane gp;
-	public MapController(GridPane grid, Map map){
+	private BorderPane bp;
+	public MapController(GridPane grid, Map map,BorderPane bp){
 		this.gp = grid;
 		this.map=map;
+		this.bp = bp;
 	}
 	
 	
@@ -44,6 +47,8 @@ public class MapController implements Observer{
 		
 		caseGridPaneArrivee.getChildren().add(carreArrivee);
 		this.gp.add(caseGridPaneArrivee, this.map.joueur.getPositionX(),this.map.joueur.getPositionY());
+		
+		
 		
 	}
 }
