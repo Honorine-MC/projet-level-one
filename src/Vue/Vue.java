@@ -83,7 +83,6 @@ public class Vue extends Application{
 					GridPane caseGridPane = new GridPane();
 					caseGridPane.getChildren().add(carre);
 					inventaire.add(caseGridPane,i,10);
-	
 				}
 			}
 			else{
@@ -94,36 +93,46 @@ public class Vue extends Application{
 					GridPane caseGridPane = new GridPane();
 					caseGridPane.getChildren().add(carre);
 					inventaire.add(caseGridPane, i, 10);
-					
 				}
 			}
 			
-			/*Debut Partie Saleté test*/
-			
-			/*Fin Partie Saleté test*/
 			
 			/*Controller*/
-			MapController mc = new MapController(this.map);
+			MapController mc = new MapController(plateau,this.map);
 			this.map.addObserver(mc);
-			//this.addListner(mc);
-			
+			/*Fin Controller*/
 			
 			primaryStage.setTitle("LEVEL ONE");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
+			/*Partie lecture clavier*/
 			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
 	            
 	            public void handle(KeyEvent event) {
 	                if (event.getCode() == KeyCode.RIGHT) {
 	                    System.out.println("halalaa");
 	                    map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
 	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
-	                	//primaryStage.close();
+	                }
+	                if (event.getCode() == KeyCode.LEFT) {
+	                    System.out.println("halalaa");
+	                    map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
+	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
+	                }
+	                if (event.getCode() == KeyCode.UP) {
+	                    System.out.println("halalaa");
+	                    map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
+	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
+	                }
+	                if (event.getCode() == KeyCode.DOWN) {
+	                    System.out.println("halalaa");
+	                    map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
+	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
 	                }
 	            }
 	        });
+			/*Fin Partie lecture clavier*/
 			
 		}
 		catch(Exception e){
@@ -135,12 +144,4 @@ public class Vue extends Application{
 		// TODO Auto-generated method stub
 		launch(args) ;
 	}
-	
-	//Joueur j = this.map.plateau[0][0].getElement();
-	
-	//JoueurController jc = new JoueurController(...)
-	
-	//j.addObserver(jc);
-	
-	//this.addListner(mc);
 }

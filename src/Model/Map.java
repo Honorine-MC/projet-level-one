@@ -199,6 +199,11 @@ public class Map extends Observable{
 			this.plateau[currentPositionX][currentPositionY].setElement(null);
 			this.joueur.avancer(x, y);//deplacement joueur
 			this.plateau[x][y].setElement(this.joueur);
+			int[] couplePosition = new int[2];
+			couplePosition[0]=currentPositionX;
+			couplePosition[1]=currentPositionY;
+			this.setChanged();
+			this.notifyObservers(couplePosition);
 		}
 		else{
 			System.out.println("Deplacement invalide");
