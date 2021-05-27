@@ -14,7 +14,7 @@ public class Map extends Observable{
 	public Map(int n, int p) {
 		nbLig = n;
 		nbCol = p;
-		this.plateau = new Case[nbLig][nbCol];
+		this.plateau = new Case[nbCol][nbLig];
 	}
 	
 	
@@ -34,98 +34,98 @@ public class Map extends Observable{
 		this.plateau[this.joueur.getPositionX()][this.joueur.getPositionY()].setElement(this.joueur);
 		
 		/*Placement des murs*/
-		Obstacle mur1 = new Mur(0,1,false);
-		this.plateau[0][1].setElement(mur1);
-		Obstacle mur2 = new Mur(0,2,false);
-		this.plateau[0][2].setElement(mur2);
-		Obstacle mur3 = new Mur(0,4,false);
-		this.plateau[0][4].setElement(mur3);
-		Obstacle mur4 = new Mur(0,6,false);
-		this.plateau[0][6].setElement(mur4);
-		Obstacle mur5 = new Mur(0,7,false);
-		this.plateau[0][7].setElement(mur5);
+		Obstacle mur1 = new Mur(1,0,false);
+		this.plateau[1][0].setElement(mur1);
+		Obstacle mur2 = new Mur(2,0,false);
+		this.plateau[2][0].setElement(mur2);
+		Obstacle mur3 = new Mur(4,0,false);
+		this.plateau[4][0].setElement(mur3);
+		Obstacle mur4 = new Mur(6,0,false);
+		this.plateau[6][0].setElement(mur4);
+		Obstacle mur5 = new Mur(7,0,false);
+		this.plateau[7][0].setElement(mur5);
 		Obstacle mur6 = new Mur(1,1,false);
 		this.plateau[1][1].setElement(mur6);
-		Obstacle mur7 = new Mur(1,2,false);
-		this.plateau[1][2].setElement(mur7);
-		Obstacle mur8 = new Mur(1,4,false);
-		this.plateau[1][4].setElement(mur8);
-		Obstacle mur9 = new Mur(2,4,false);
-		this.plateau[2][4].setElement(mur9);
-		Obstacle mur10 = new Mur(2,6,false);
-		this.plateau[2][6].setElement(mur10);
-		Obstacle mur11 = new Mur(3,0,false);
-		this.plateau[3][0].setElement(mur11);
-		Obstacle mur12 = new Mur(3,1,false);
-		this.plateau[3][1].setElement(mur12);
-		Obstacle mur13 = new Mur(3,2,false);
-		this.plateau[3][2].setElement(mur13);
-		Obstacle mur14 = new Mur(3,4,false);
-		this.plateau[3][4].setElement(mur14);
-		Obstacle mur15 = new Mur(3,6,false);
-		this.plateau[3][6].setElement(mur15);
-		Obstacle mur16 = new Mur(4,0,false);
-		this.plateau[4][0].setElement(mur16);
+		Obstacle mur7 = new Mur(2,1,false);
+		this.plateau[2][1].setElement(mur7);
+		Obstacle mur8 = new Mur(4,1,false);
+		this.plateau[4][1].setElement(mur8);
+		Obstacle mur9 = new Mur(4,2,false);
+		this.plateau[4][2].setElement(mur9);
+		Obstacle mur10 = new Mur(6,2,false);
+		this.plateau[6][2].setElement(mur10);
+		Obstacle mur11 = new Mur(0,3,false);
+		this.plateau[0][3].setElement(mur11);
+		Obstacle mur12 = new Mur(1,3,false);
+		this.plateau[1][3].setElement(mur12);
+		Obstacle mur13 = new Mur(2,3,false);
+		this.plateau[2][3].setElement(mur13);
+		Obstacle mur14 = new Mur(4,3,false);
+		this.plateau[4][3].setElement(mur14);
+		Obstacle mur15 = new Mur(6,3,false);
+		this.plateau[6][3].setElement(mur15);
+		Obstacle mur16 = new Mur(0,4,false);
+		this.plateau[0][4].setElement(mur16);
 		Obstacle mur17 = new Mur(4,4,false);
 		this.plateau[4][4].setElement(mur17);
-		Obstacle mur18 = new Mur(4,6,false);
-		this.plateau[4][6].setElement(mur18);
-		Obstacle mur19 = new Mur(5,0,false);
-		this.plateau[5][0].setElement(mur19);
-		Obstacle mur20 = new Mur(5,4,false);
-		this.plateau[5][4].setElement(mur20);
-		Obstacle mur21 = new Mur(5,6,false);
-		this.plateau[5][6].setElement(mur21);
-		Obstacle mur22 = new Mur(6,0,false);
-		this.plateau[6][0].setElement(mur22);
+		Obstacle mur18 = new Mur(6,4,false);
+		this.plateau[6][4].setElement(mur18);
+		Obstacle mur19 = new Mur(0,5,false);
+		this.plateau[0][5].setElement(mur19);
+		Obstacle mur20 = new Mur(4,5,false);
+		this.plateau[4][5].setElement(mur20);
+		Obstacle mur21 = new Mur(6,5,false);
+		this.plateau[6][5].setElement(mur21);
+		Obstacle mur22 = new Mur(0,6,false);
+		this.plateau[0][6].setElement(mur22);
 		Obstacle mur23 = new Mur(6,6,false);
 		this.plateau[6][6].setElement(mur23);
-		Obstacle mur24 = new Mur(7,0,false);
-		this.plateau[7][0].setElement(mur24);
-		Obstacle mur25 = new Mur(7,1,false);
-		this.plateau[7][1].setElement(mur25);
-		Obstacle mur26 = new Mur(7,3,false);
-		this.plateau[7][3].setElement(mur26);
-		Obstacle mur27 = new Mur(7,5,false);
-		this.plateau[7][5].setElement(mur27);
-		Obstacle mur28 = new Mur(7,6,false);
-		this.plateau[7][6].setElement(mur28);
+		Obstacle mur24 = new Mur(0,7,false);
+		this.plateau[0][7].setElement(mur24);
+		Obstacle mur25 = new Mur(1,7,false);
+		this.plateau[1][7].setElement(mur25);
+		Obstacle mur26 = new Mur(3,7,false);
+		this.plateau[3][7].setElement(mur26);
+		Obstacle mur27 = new Mur(5,7,false);
+		this.plateau[5][7].setElement(mur27);
+		Obstacle mur28 = new Mur(6,7,false);
+		this.plateau[6][7].setElement(mur28);
 		
 		/*Placement des portes*/
-		Obstacle porte1 = new Porte(1,3,true);
-		this.plateau[1][3].setElement(porte1);
+		Obstacle porte1 = new Porte(3,1,true);
+		this.plateau[3][1].setElement(porte1);
 		Obstacle porte2 = new Porte(2,1,false);
-		this.plateau[2][1].setElement(porte2);
-		Obstacle porte3 = new Porte(5,2,false);
-		this.plateau[5][2].setElement(porte3);
+		this.plateau[1][2].setElement(porte2);
+		Obstacle porte3 = new Porte(2,5,false);
+		this.plateau[2][5].setElement(porte3);
 		
 		/*Placement de la clef */
 		Item clef = new Clef(2,4,"clef");
-		this.plateau[4][2].setElement(clef);
+		this.plateau[2][4].setElement(clef);
 		
 		
 		/*Placement des monstres*/
-		Personnage monstre1 = new Monstre(4,5,"Muzan",10,2);
-		this.plateau[4][5].setElement(monstre1);
-		Personnage monstre2 = new Monstre(4,7,"Akaza",10,2);
-		this.plateau[3][7].setElement(monstre2);
-		Personnage monstre3 = new Monstre(7,1,"Hisoka",10,2);
-		this.plateau[7][1].setElement(monstre3);
+		Personnage monstre1 = new Monstre(5,4,"Muzan",10,2);
+		this.plateau[5][4].setElement(monstre1);
+		Personnage monstre2 = new Monstre(7,4,"Akaza",10,2);
+		this.plateau[7][4].setElement(monstre2);
+		Personnage monstre3 = new Monstre(1,7,"Hisoka",10,2);
+		this.plateau[1][7].setElement(monstre3);
 		
 		/*Placement des ITEM*/
-		Item potion1 = new Potion(5,3,"popo",10);
-		this.plateau[5][3].setElement(potion1);
+		Item potion1 = new Potion(3,5,"popo",10);
+		this.plateau[3][5].setElement(potion1);
 		
-		Item arme1 = new Arme(6,0,"arc",5);
-		this.plateau[6][0].setElement(arme1);
+		Item arme1 = new Arme(0,6,"arc",5);
+		this.plateau[0][6].setElement(arme1);
 		
 		/*Placement des PNJ*/
-		Personnage pnj1 = new Pnj(0,3,"a",arme1,10);
-		this.plateau[0][3].setElement(pnj1);
-		Personnage pnj2 = new Pnj(0,5,"b",arme1,10); // autre arme
-		this.plateau[0][5].setElement(pnj2);
-		Personnage pnj3 = new Pnj(4,7,"Gojo",potion1,10);
-		this.plateau[4][7].setElement(pnj3);
+		Personnage pnj1 = new Pnj(3,0,"a",arme1,10);
+		this.plateau[3][0].setElement(pnj1);
+		Personnage pnj2 = new Pnj(5,0,"b",arme1,10); // autre arme
+		this.plateau[5][0].setElement(pnj2);
+		Personnage pnj3 = new Pnj(7,4,"Gojo",potion1,10);
+		this.plateau[7][4].setElement(pnj3);
 		
 		
 	}
