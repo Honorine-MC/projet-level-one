@@ -3,16 +3,14 @@ package Controller;
 import java.util.Observable;
 import java.util.Observer;
 
-import Model.Joueur;
 import Model.Map;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class MapController implements Observer{
 	Map map;
@@ -26,8 +24,7 @@ public class MapController implements Observer{
 	public void update(Observable arg0, Object arg1) {
 		// TODO mise des coordonnees de l'IMage View
 		int[] currentPos = (int[]) arg1;
-		System.out.println("Update fonctionne");
-		
+	
 		/*Effacer joueur de case precedente*/
 		Rectangle carre = new Rectangle(0,0,80,80);
 		carre.setFill(Color.WHITE);
@@ -47,8 +44,6 @@ public class MapController implements Observer{
 		
 		caseGridPaneArrivee.getChildren().add(carreArrivee);
 		this.gp.add(caseGridPaneArrivee, this.map.joueur.getPositionX(),this.map.joueur.getPositionY());
-		
-		/*Partie inventaire*/
 		
 	}
 }

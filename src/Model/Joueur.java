@@ -9,7 +9,7 @@ public class Joueur extends Personnage {
 	//constructeur
 	public Joueur(String nom,double vie,double degat) {
 		super(3,3,"Vue/joueur.png",nom,vie);
-		inventaire = new ArrayList<Item>();
+		inventaire = new ArrayList<Item>(5);
 		this.xp = 0;
 		this.degat = degat;
 	}
@@ -58,29 +58,45 @@ public class Joueur extends Personnage {
 	
 	//prendre un item à un pnj
 	public void prendre(Pnj pnj){
-		this.inventaire.add(pnj.getItem());	
+		this.inventaire.add(pnj.getItem());
+		this.setChanged();
+		this.notifyObservers();
+		
 	}
 	
 	//ramasser un item qui est au sol 
 	public void ramasser(Item i){
 		this.inventaire.add(i);
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	//utiliser un item de son inventaire.
 	public void utiliser(Item i){
+		for(int j=0; j< this.inventaire.size();j++){
+			System.out.println("Avant:"+this.inventaire.get(j));
+		}
 		if( i instanceof Arme){
 			Arme a = (Arme)i;
 			this.inventaire.remove(i);
 			this.setDegat(a.getDegat_apporte());
+			this.setChanged();
+			this.notifyObservers();
 		}
 		else if ( i instanceof Potion){
 			Potion p = (Potion)i;
 			this.inventaire.remove(i);
 			this.setVie(p.getVie_apporte());
+			this.setChanged();
+			this.notifyObservers();
 		}
 		else{
 			System.out.println("error"); // créer une exception
-		}		
+		}
+		for(int j=0; j< this.inventaire.size();j++){
+			System.out.println("Apres : "+this.inventaire.get(j));
+		}
+
 	}
 	
 	//ranger l'arme dans son inventaire.	

@@ -1,30 +1,27 @@
 package Vue;
 
-import java.awt.Label;
-import java.util.ArrayList;
-
+import Controller.InventaireController;
 import Controller.MapController;
 import Model.Case;
 import Model.Element;
-import Model.Item;
 import Model.Joueur;
 import Model.Map;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class Vue extends Application{
 	private Map map = new Map(8,8);
@@ -33,18 +30,65 @@ public class Vue extends Application{
 	public void start(Stage primaryStage) throws Exception{
 		try{
 			VBox root = new VBox();
-			Scene scene = new Scene(root,1000,800);
+			Scene scene = new Scene(root,1000,900);
 			scene.setFill(Color.CADETBLUE);
 			
+			map.init();
+			
+			/* Affichage du Joueur, de son nom, de sa vie, de son xp */
+			BorderPane bp = new BorderPane();
+			bp.setPadding(new Insets(0, 0, 0, 700));
+			root.getChildren().add(bp);
+
+			Text t= new Text();
+			t.setText(this.map.joueur.getNom());
+			t.setFont(Font.font ("Verdana", 40));
+			t.setFill(Color.WHITE);
+			bp.setTop(t);
+			
+			Text vieText= new Text();
+			double vie = this.map.joueur.getVie();
+			vieText.setText("Vie : "+String.valueOf(vie));
+			vieText.setFont(Font.font ("Verdana", 20));
+			vieText.setFill(Color.BLACK);
+			bp.setLeft(vieText);
+			
+			Text xpText= new Text();
+			double xp = this.map.joueur.getXp();
+			xpText.setText("Xp : "+String.valueOf(xp));
+			xpText.setFont(Font.font ("Verdana", 20));
+			xpText.setFill(Color.BLACK);
+			bp.setBottom(xpText);
+			
+			
+			Rectangle icone = new Rectangle(0,0,30,30);
+			icone.setStroke(Color.BLACK);
+			Image imageicone = new Image(this.map.joueur.getImage());
+			icone.setFill(new ImagePattern(imageicone));
+			bp.setCenter(icone);
+			
+			
+			
+			/* Affichage de la "console" */
+			
+			BorderPane b = new BorderPane();
+			b.setPadding(new Insets(20, 0, 0, 700));
+			root.getChildren().add(b);
+			
+			Text consoleText= new Text();
+			consoleText.setText("bienvenu");
+			consoleText.setFont(Font.font ("Verdana", 20));
+			consoleText.setFill(Color.WHITE);
+			b.setTop(consoleText);
+			
+		
+			/*Affichage de la Map */
 			GridPane plateau = new GridPane();
-			plateau.setPadding(new Insets(40, 40, 40, 40));
+			plateau.setPadding(new Insets(0, 0, 0, 20));
 			plateau.setMinSize(300, 300);
-//			plateau.setVgap(5);
-//			plateau.setHgap(5);
 			 
 			root.getChildren().add(plateau);
 			
-			map.init();
 			
 			Case[][] plateauTab = map.plateau;
 			
@@ -66,6 +110,9 @@ public class Vue extends Application{
 					plateau.add(caseGridPane, i, j);
 				}
 			}
+			
+
+			
 					
 	
 			/* Affichage de l'inventaire*/
@@ -82,7 +129,14 @@ public class Vue extends Application{
 					carre.setFill(new ImagePattern(image));				
 					GridPane caseGridPane = new GridPane();
 					caseGridPane.getChildren().add(carre);
-					inventaire.add(caseGridPane,i,10);
+					inventaire.add(caseGridPane,i,6);
+					
+					Text text= new Text();
+					text.setText(Integer.toString(i));
+					text.setFont(Font.font("Verdana",20));
+					text.setFill(Color.WHITE);
+					inventaire.add(text,i,7);
+									
 				}
 			}
 			else{
@@ -92,14 +146,23 @@ public class Vue extends Application{
 					carre.setStroke(Color.BLACK);
 					GridPane caseGridPane = new GridPane();
 					caseGridPane.getChildren().add(carre);
-					inventaire.add(caseGridPane, i, 10);
+					inventaire.add(caseGridPane, i, 6);
+					
+					Text text= new Text();
+					text.setText(Integer.toString(i));
+					text.setFont(Font.font("Verdana",20));
+					text.setFill(Color.WHITE);
+					inventaire.add(text,i,7);
 				}
 			}
-			
-			
+						
 			/*Controller*/
 			MapController mc = new MapController(plateau,this.map);
 			this.map.addObserver(mc);
+			
+			InventaireController ic = new InventaireController(inventaire,this.map.joueur);
+			this.map.joueur.addObserver(ic);
+			
 			/*Fin Controller*/
 			
 			primaryStage.setTitle("LEVEL ONE");
@@ -111,25 +174,39 @@ public class Vue extends Application{
 	            
 	            public void handle(KeyEvent event) {
 	                if (event.getCode() == KeyCode.RIGHT) {
-	                    System.out.println("halalaa");
 	                    map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
-	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
 	                }
 	                if (event.getCode() == KeyCode.LEFT) {
-	                    System.out.println("halalaa");
 	                    map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
-	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
 	                }
 	                if (event.getCode() == KeyCode.UP) {
-	                    System.out.println("halalaa");
 	                    map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
-	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
 	                }
 	                if (event.getCode() == KeyCode.DOWN) {
-	                    System.out.println("halalaa");
 	                    map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
-	                    System.out.println("X = "+joueur.getPositionX()+" et Y = "+joueur.getPositionY());
 	                }
+	                if(event.getCode() == KeyCode.NUMPAD0){
+	                	joueur.utiliser(joueur.getInventaire().get(0));
+	                	System.out.println("Objet utiliser");
+	                }
+	                if(event.getCode() == KeyCode.NUMPAD1){
+	                	joueur.utiliser(joueur.getInventaire().get(1));
+	                	System.out.println("Objet utiliser");
+	                }
+	                if(event.getCode() == KeyCode.NUMPAD2){
+	                	joueur.utiliser(joueur.getInventaire().get(2));
+	                	System.out.println("Objet utiliser");
+	                }
+	                if(event.getCode() == KeyCode.NUMPAD3){
+	                	joueur.utiliser(joueur.getInventaire().get(3));
+	                	System.out.println("Objet utiliser");
+	                }
+	                if(event.getCode() == KeyCode.NUMPAD4){
+	                	joueur.utiliser(joueur.getInventaire().get(4));
+	                	System.out.println("Objet utiliser");
+	                }
+	                
+	                
 	            }
 	        });
 			/*Fin Partie lecture clavier*/

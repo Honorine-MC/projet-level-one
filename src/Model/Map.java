@@ -185,6 +185,7 @@ public class Map extends Observable{
 			}
 		}
 		return res;
+		
 	}
 	
 	/**
@@ -195,6 +196,16 @@ public class Map extends Observable{
 			/*On recupere la position actuelle du joueur*/
 			int currentPositionX = this.joueur.getPositionX();
 			int currentPositionY = this.joueur.getPositionY();
+			
+			if(this.plateau[x][y].getElement() instanceof Item){
+				this.joueur.ramasser((Item)this.plateau[x][y].getElement());
+				System.out.println("item rammasseé");
+			}
+			if(this.plateau[x][y].getElement() instanceof Pnj){
+				Pnj pnj = (Pnj)this.plateau[x][y].getElement();
+				this.joueur.prendre(pnj);
+			}
+			
 			/*Mise a jour de la map*/
 			this.plateau[currentPositionX][currentPositionY].setElement(null);
 			this.joueur.avancer(x, y);//deplacement joueur
@@ -204,7 +215,9 @@ public class Map extends Observable{
 			couplePosition[1]=currentPositionY;
 			this.setChanged();
 			this.notifyObservers(couplePosition);
+			
 		}
+		
 		else{
 			System.out.println("Deplacement invalide");
 		}
