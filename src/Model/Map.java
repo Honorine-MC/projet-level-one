@@ -99,6 +99,11 @@ public class Map extends Observable{
 		Obstacle porte3 = new Porte(5,2,false);
 		this.plateau[5][2].setElement(porte3);
 		
+		/*Placement de la clef */
+		Item clef = new Clef(2,4,"clef");
+		this.plateau[4][2].setElement(clef);
+		
+		
 		/*Placement des monstres*/
 		Personnage monstre1 = new Monstre(4,5,"Muzan",10,2);
 		this.plateau[4][5].setElement(monstre1);
@@ -175,6 +180,19 @@ public class Map extends Observable{
 			if(!o.isOuvert()){
 				res = false;
 				System.out.println("Vous ne pouvez pas passer cet obstacle !");
+			}
+		}
+		if(this.plateau[x][y].getElement() instanceof Porte){
+			Porte p = (Porte) this.plateau[x][y].getElement();
+			boolean haveKey = false;
+			for(Item i : this.joueur.getInventaire()){
+				if(i instanceof Clef){
+					haveKey = true;
+				}
+			}
+			if(!p.isOuvert() && haveKey==false){
+				res = false;
+				System.out.println("Il te faut une clef Ryad");
 			}
 		}
 		/*On verifie si le monstre a été battu*/

@@ -93,7 +93,7 @@ public class Vue extends Application{
 			
 		
 			/*Affichage de la Map */
-			GridPane plateau = new GridPane();
+			final GridPane plateau = new GridPane();
 			plateau.setPadding(new Insets(0, 0, 0, 20));
 			plateau.setMinSize(300, 300);
 			 
@@ -195,14 +195,50 @@ public class Vue extends Application{
 			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 	            
 	            public void handle(KeyEvent event) {
+	            	/*Lecture Clavier pour deplacement*/
 	                if (event.getCode() == KeyCode.RIGHT) {
 	    				if(joueur.getPositionX() != 7) {
-	    					map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
+	    					/*Verifie si il y a une porte*/
+	    					if(map.plateau[joueur.getPositionX()+1][joueur.getPositionY()].getElement() instanceof Porte){
+	    						Porte p = (Porte)map.plateau[joueur.getPositionX()+1][joueur.getPositionY()].getElement();
+	    						/*On verifie mtn si la porte est ouverte*/
+	    						if(p.isOuvert()==true){
+	    							map.deplacerJoueur(joueur.getPositionX()+2,joueur.getPositionY());//saute 2 case
+	    						}
+	    						/*Si on possede une clef*/
+	    						else if(p.isOuvert()==false && map.joueur.haveKey()){
+	    							/*Mise a jour graphique : ouvrir porte*/
+	    							Rectangle carre = new Rectangle(0,0,80,80);
+	    							carre.setFill(Color.WHITE);
+	    							carre.setStroke(Color.BLACK);
+	    							Image imagePorteOuverte = new Image("Vue/porte_ouverte.png");
+									carre.setFill(new ImagePattern(imagePorteOuverte));
+									GridPane caseGridPane = new GridPane();
+									caseGridPane.getChildren().add(carre);
+	    							plateau.add(caseGridPane,joueur.getPositionX()+1,joueur.getPositionY());
+	    							
+	    							/*Mise a jour Model : ouvrir porte*/
+	    							p.setOuvert(true);
+	    							map.plateau[joueur.getPositionX()+1][joueur.getPositionY()].setElement(p);
+	    							map.deplacerJoueur(joueur.getPositionX()+2,joueur.getPositionY());
+	    						}
+	    					}
+	    					else{
+	    						map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
+	    					}
 	    				}
 	                }
 	                if (event.getCode() == KeyCode.LEFT) {
 	    				if(joueur.getPositionX() != 0) {
-	                    map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
+	    					if(map.plateau[joueur.getPositionX()-1][joueur.getPositionY()].getElement() instanceof Porte){
+	    						Porte p = (Porte)map.plateau[joueur.getPositionX()-1][joueur.getPositionY()].getElement();
+	    						if(p.isOuvert()==true){
+	    							map.deplacerJoueur(joueur.getPositionX()-2,joueur.getPositionY());
+	    						}
+	    					}
+	    					else{
+	    						map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
+	    					}
 	    				}
 	    			}
 	                if (event.getCode() == KeyCode.UP) {
@@ -215,6 +251,8 @@ public class Vue extends Application{
 	    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
 	    				}
 	                }
+	                
+	                /*Lecture Clavier pour inventaire*/
 	                if(event.getCode() == KeyCode.NUMPAD0){
 	                	joueur.utiliser(joueur.getInventaire().get(0));
 	                }

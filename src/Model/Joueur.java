@@ -107,4 +107,17 @@ public class Joueur extends Personnage {
 		//appeler setChange
 		//Appeler NotifyObserver
 	}
+	
+	/**
+	 * Function -> return boolean : joueur possede ou non une clef
+	 */
+	public boolean haveKey(){
+		boolean res = false;
+		for(Item i : this.getInventaire()){
+			if(i instanceof Clef){
+				res = true;
+			}
+		}
+		return res;
+	}
 }
