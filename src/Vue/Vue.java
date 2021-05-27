@@ -6,6 +6,7 @@ import Model.Case;
 import Model.Element;
 import Model.Joueur;
 import Model.Map;
+import Model.Porte;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -104,17 +105,20 @@ public class Vue extends Application{
 					if(plateauTab[i][j].getElement() instanceof Element){
 						Image image = new Image(plateauTab[i][j].getElement().getImage());
 						carre.setFill(new ImagePattern(image));
+						if(plateauTab[i][j].getElement() instanceof Porte){
+							Porte p = (Porte)plateauTab[i][j].getElement();
+							if(p.isOuvert()){
+								Image imagePorteOuverte = new Image("Vue/porte_ouverte.png");
+								carre.setFill(new ImagePattern(imagePorteOuverte));
+							}
+						}
 					}
 					GridPane caseGridPane = new GridPane();
 					caseGridPane.getChildren().add(carre);
 					plateau.add(caseGridPane, i, j);
 				}
 			}
-			
-
-			
-					
-	
+				
 			/* Affichage de l'inventaire*/
 			GridPane inventaire = new GridPane();
 			root.getChildren().add(inventaire);
@@ -194,23 +198,18 @@ public class Vue extends Application{
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD0){
 	                	joueur.utiliser(joueur.getInventaire().get(0));
-	                	System.out.println("Objet utiliser");
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD1){
 	                	joueur.utiliser(joueur.getInventaire().get(1));
-	                	System.out.println("Objet utiliser");
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD2){
 	                	joueur.utiliser(joueur.getInventaire().get(2));
-	                	System.out.println("Objet utiliser");
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD3){
 	                	joueur.utiliser(joueur.getInventaire().get(3));
-	                	System.out.println("Objet utiliser");
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD4){
 	                	joueur.utiliser(joueur.getInventaire().get(4));
-	                	System.out.println("Objet utiliser");
 	                }
 	                
 	                
