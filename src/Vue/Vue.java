@@ -235,6 +235,22 @@ public class Vue extends Application{
 	    						if(p.isOuvert()==true){
 	    							map.deplacerJoueur(joueur.getPositionX()-2,joueur.getPositionY());
 	    						}
+	    						else if(p.isOuvert()==false && map.joueur.haveKey()){
+	    							/*Mise a jour graphique : ouvrir porte*/
+	    							Rectangle carre = new Rectangle(0,0,80,80);
+	    							carre.setFill(Color.WHITE);
+	    							carre.setStroke(Color.BLACK);
+	    							Image imagePorteOuverte = new Image("Vue/porte_ouverte.png");
+									carre.setFill(new ImagePattern(imagePorteOuverte));
+									GridPane caseGridPane = new GridPane();
+									caseGridPane.getChildren().add(carre);
+	    							plateau.add(caseGridPane,joueur.getPositionX()-1,joueur.getPositionY());
+	    							
+	    							/*Mise a jour Model : ouvrir porte*/
+	    							p.setOuvert(true);
+	    							map.plateau[joueur.getPositionX()-1][joueur.getPositionY()].setElement(p);
+	    							map.deplacerJoueur(joueur.getPositionX()-2,joueur.getPositionY());
+	    						}
 	    					}
 	    					else{
 	    						map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
@@ -243,12 +259,60 @@ public class Vue extends Application{
 	    			}
 	                if (event.getCode() == KeyCode.UP) {
 	    				if(joueur.getPositionY() != 0) {
-	    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
+	    					if(map.plateau[joueur.getPositionX()][joueur.getPositionY()-1].getElement() instanceof Porte){
+	    						Porte p = (Porte)map.plateau[joueur.getPositionX()][joueur.getPositionY()-1].getElement();
+	    						if(p.isOuvert()==true){
+	    							map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-2);
+	    						}
+	    						else if(p.isOuvert()==false && map.joueur.haveKey()){
+	    							/*Mise a jour graphique : ouvrir porte*/
+	    							Rectangle carre = new Rectangle(0,0,80,80);
+	    							carre.setFill(Color.WHITE);
+	    							carre.setStroke(Color.BLACK);
+	    							Image imagePorteOuverte = new Image("Vue/porte_ouverte.png");
+									carre.setFill(new ImagePattern(imagePorteOuverte));
+									GridPane caseGridPane = new GridPane();
+									caseGridPane.getChildren().add(carre);
+	    							plateau.add(caseGridPane,joueur.getPositionX(),joueur.getPositionY()-1);
+	    							
+	    							/*Mise a jour Model : ouvrir porte*/
+	    							p.setOuvert(true);
+	    							map.plateau[joueur.getPositionX()][joueur.getPositionY()-1].setElement(p);
+			    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-2);
+	    						}
+	    					}
+	    					else{
+		    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
+	    					}
 	    				}
 	                }
 	                if (event.getCode() == KeyCode.DOWN) {
 	    				if(joueur.getPositionY() != 7) {
-	    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
+	    					if(map.plateau[joueur.getPositionX()][joueur.getPositionY()+1].getElement() instanceof Porte){
+	    						Porte p = (Porte)map.plateau[joueur.getPositionX()][joueur.getPositionY()+1].getElement();
+	    						if(p.isOuvert()==true){
+	    							map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+2);
+	    						}
+	    						else if(p.isOuvert()==false && map.joueur.haveKey()){
+	    							/*Mise a jour graphique : ouvrir porte*/
+	    							Rectangle carre = new Rectangle(0,0,80,80);
+	    							carre.setFill(Color.WHITE);
+	    							carre.setStroke(Color.BLACK);
+	    							Image imagePorteOuverte = new Image("Vue/porte_ouverte.png");
+									carre.setFill(new ImagePattern(imagePorteOuverte));
+									GridPane caseGridPane = new GridPane();
+									caseGridPane.getChildren().add(carre);
+	    							plateau.add(caseGridPane,joueur.getPositionX(),joueur.getPositionY()+1);
+	    							
+	    							/*Mise a jour Model : ouvrir porte*/
+	    							p.setOuvert(true);
+	    							map.plateau[joueur.getPositionX()][joueur.getPositionY()+1].setElement(p);
+			    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+2);
+	    						}
+	    					}
+	    					else{
+		    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
+	    					}
 	    				}
 	                }
 	                
