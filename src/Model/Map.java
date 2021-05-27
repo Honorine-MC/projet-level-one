@@ -199,7 +199,7 @@ public class Map extends Observable{
 			
 			if(this.plateau[x][y].getElement() instanceof Item){
 				this.joueur.ramasser((Item)this.plateau[x][y].getElement());
-				System.out.println("item rammasseé");
+				System.out.println("item récupéré");
 			}
 			if(this.plateau[x][y].getElement() instanceof Pnj){
 				Pnj pnj = (Pnj)this.plateau[x][y].getElement();

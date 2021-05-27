@@ -58,7 +58,4 @@ public class InventaireController implements Observer{
 			}
 		}
 	}
-
-	
-
 }
