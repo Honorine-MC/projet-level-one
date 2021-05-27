@@ -24,30 +24,8 @@ public class MapController implements Observer{
 	}
 	
 	
-	public void update(Observable arg0, Object arg1) {
-		
-		Text vieText= new Text();
-		double vie = this.map.joueur.getVie();
-		vieText.setText("Vie : "+String.valueOf(vie));
-		vieText.setFont(Font.font ("Verdana", 20));
-		vieText.setFill(Color.BLACK);
-		bp.setLeft(vieText);
-		
-		Text xpText= new Text();
-		double xp = this.map.joueur.getXp();
-		xpText.setText("Xp : "+String.valueOf(xp));
-		xpText.setFont(Font.font ("Verdana", 20));
-		xpText.setFill(Color.BLACK);
-		bp.setBottom(xpText);
-		
-		Text degatText= new Text();
-		double degat = this.map.joueur.getDegat();
-		degatText.setText("Degat : "+String.valueOf(degat));
-		degatText.setFont(Font.font ("Verdana", 20));
-		degatText.setFill(Color.BLACK);
-		bp.setCenter(degatText);
-		
-		// TODO mise des coordonnees de l'IMage View
+	public void update(Observable arg0, Object arg1) {		
+		// TODO mise a jour des coordonnees de l'IMage View
 		int[] currentPos = (int[]) arg1;
 	
 		/*Effacer joueur de case precedente*/

@@ -1,6 +1,7 @@
 package Vue;
 
 import Controller.InventaireController;
+import Controller.JoueurController;
 import Controller.MapController;
 import Model.Case;
 import Model.Element;
@@ -182,6 +183,8 @@ public class Vue extends Application{
 			InventaireController ic = new InventaireController(inventaire,this.map.joueur);
 			this.map.joueur.addObserver(ic);
 			
+			JoueurController jc = new JoueurController(this.map.joueur,bp);
+			this.map.joueur.addObserver(jc);
 			/*Fin Controller*/
 			
 			primaryStage.setTitle("LEVEL ONE");

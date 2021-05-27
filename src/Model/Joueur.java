@@ -73,9 +73,6 @@ public class Joueur extends Personnage {
 	
 	//utiliser un item de son inventaire.
 	public void utiliser(Item i){
-		for(int j=0; j< this.inventaire.size();j++){
-			System.out.println("Avant:"+this.inventaire.get(j));
-		}
 		if( i instanceof Arme){
 			Arme a = (Arme)i;
 			this.inventaire.remove(i);
@@ -93,10 +90,6 @@ public class Joueur extends Personnage {
 		else{
 			System.out.println("error"); // créer une exception
 		}
-		for(int j=0; j< this.inventaire.size();j++){
-			System.out.println("Apres : "+this.inventaire.get(j));
-		}
-
 	}
 	
 	//ranger l'arme dans son inventaire.	
