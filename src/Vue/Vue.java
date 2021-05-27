@@ -85,7 +85,7 @@ public class Vue extends Application{
 			root.getChildren().add(b);
 			
 			Text consoleText= new Text();
-			consoleText.setText("bienvenu");
+			consoleText.setText("bienvenue");
 			consoleText.setFont(Font.font ("Verdana", 20));
 			consoleText.setFill(Color.WHITE);
 			b.setTop(consoleText);
@@ -193,16 +193,24 @@ public class Vue extends Application{
 	            
 	            public void handle(KeyEvent event) {
 	                if (event.getCode() == KeyCode.RIGHT) {
-	                    map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
+	    				if(joueur.getPositionX() != 7) {
+	    					map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
+	    				}
 	                }
 	                if (event.getCode() == KeyCode.LEFT) {
+	    				if(joueur.getPositionX() != 0) {
 	                    map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
-	                }
+	    				}
+	    			}
 	                if (event.getCode() == KeyCode.UP) {
-	                    map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
+	    				if(joueur.getPositionY() != 0) {
+	    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
+	    				}
 	                }
 	                if (event.getCode() == KeyCode.DOWN) {
-	                    map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
+	    				if(joueur.getPositionY() != 7) {
+	    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
+	    				}
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD0){
 	                	joueur.utiliser(joueur.getInventaire().get(0));
