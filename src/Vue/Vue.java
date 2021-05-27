@@ -66,7 +66,15 @@ public class Vue extends Application{
 			icone.setStroke(Color.BLACK);
 			Image imageicone = new Image(this.map.joueur.getImage());
 			icone.setFill(new ImagePattern(imageicone));
-			bp.setCenter(icone);
+			bp.setRight(icone);
+			
+			Text degatText= new Text();
+			double degat = this.map.joueur.getDegat();
+			degatText.setText("Degat : "+String.valueOf(degat));
+			degatText.setFont(Font.font ("Verdana", 20));
+			degatText.setFill(Color.BLACK);
+			bp.setCenter(degatText);
+			
 			
 			
 			
@@ -168,7 +176,7 @@ public class Vue extends Application{
 			}
 						
 			/*Controller*/
-			MapController mc = new MapController(plateau,this.map,b);
+			MapController mc = new MapController(plateau,this.map,bp);
 			this.map.addObserver(mc);
 			
 			InventaireController ic = new InventaireController(inventaire,this.map.joueur);
