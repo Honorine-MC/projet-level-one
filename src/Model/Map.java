@@ -112,7 +112,7 @@ public class Map extends Observable{
 		Personnage monstre1 = new Monstre(5,4,"Muzan",10,2);
 		this.plateau[5][4].setElement(monstre1);
 		Personnage monstre2 = new Monstre(7,4,"Akaza",10,2);
-		this.plateau[7][4].setElement(monstre2);
+		this.plateau[7][3].setElement(monstre2);
 		Personnage monstre3 = new Monstre(1,7,"Hisoka",10,2);
 		this.plateau[1][7].setElement(monstre3);
 		
@@ -129,9 +129,7 @@ public class Map extends Observable{
 		Personnage pnj2 = new Pnj(5,0,"b",arme1,10); // autre arme
 		this.plateau[5][0].setElement(pnj2);
 		Personnage pnj3 = new Pnj(7,4,"Gojo",potion1,10);
-		this.plateau[7][4].setElement(pnj3);
-		
-		
+		this.plateau[7][4].setElement(pnj3);		
 	}
 	
 	/**
@@ -221,6 +219,14 @@ public class Map extends Observable{
 				res=false;
 			}
 		}
+		/* TODO CONDITION DE VICTOIRE 
+		 * Etre sur la position X = 7 et Y = 4
+		 * Avoir battu tous les ennemis => être niveau supérieur à 3
+		 * */
+		if((this.joueur.getPositionX() == 7 && this.joueur.getPositionY() == 4) && (this.joueur.getNiveau() > 3)) {
+			javax.swing.JOptionPane.showMessageDialog(null,"Bravo tu as gagné !");
+			System.exit(0);
+		}
 		return res;
 		
 	}
@@ -249,7 +255,6 @@ public class Map extends Observable{
 				combatEnCours = false;
 				javax.swing.JOptionPane.showMessageDialog(null,"Vous n'avez plus de points de vie, vous avez perdu !");
 				System.exit(0);
-//				System.out.println("Vous n'avez plus de points de vie, vous avez perdu !");
 			}
 		}while (combatEnCours == true);
 	}
