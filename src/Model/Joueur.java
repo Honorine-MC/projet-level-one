@@ -133,6 +133,7 @@ public class Joueur extends Personnage {
 	public boolean estVaincu(){
 		boolean res = false;
 		if(this.getVie() <=0){
+			this.setVie(0);
 			res = true;
 		}
 		return res;

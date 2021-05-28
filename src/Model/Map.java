@@ -200,11 +200,7 @@ public class Map extends Observable{
 		if(this.plateau[x][y].getElement() instanceof Monstre){
 			Monstre m = (Monstre)this.plateau[x][y].getElement();
 			System.out.println("Vous vous faites attaquer par " + m.getNom());
-			combat(m);
-//			this.joueur.attaquer((Monstre)this.plateau[x][y].getElement());
-//			this.monstre.attaquer((Joueur)this.plateau[x][y].getElement());
-//			System.out.println(this.m.getVie());
-//			System.out.println(this.joueur.getVie());			
+			combat(m);		
 			if(!m.estVaincu()){
 				res=false;
 			}
@@ -231,7 +227,9 @@ public class Map extends Observable{
 			}
 			else if (joueur.estVaincu()) {
 				combatEnCours = false;
-				System.out.println("Vous n'avez plus de points de vie, vous avez perdu !");
+				javax.swing.JOptionPane.showMessageDialog(null,"Vous n'avez plus de points de vie, vous avez perdu !");
+				System.exit(0);
+//				System.out.println("Vous n'avez plus de points de vie, vous avez perdu !");
 			}
 		}while (combatEnCours == true);
 	}

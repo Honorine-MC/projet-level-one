@@ -26,6 +26,9 @@ public class Personnage extends Element{
 	}
 
 	public void setVie(double vie) {
+		if(vie < 0) {
+			vie = 0;
+		}
 		this.vie = vie;
 	}
 
