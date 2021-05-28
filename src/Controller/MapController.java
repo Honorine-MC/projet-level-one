@@ -24,7 +24,10 @@ public class MapController implements Observer{
 	
 	public void update(Observable arg0, Object arg1) {		
 		// TODO mise a jour des coordonnees de l'IMage View
-		int[] currentPos = (int[]) arg1;
+		int[] currentPos = new int[2];
+		String[] infoFromMap = (String[])arg1;
+		currentPos[0] = Integer.parseInt(infoFromMap[0]);
+		currentPos[1] = Integer.parseInt(infoFromMap[1]);
 	
 		/*Effacer joueur de case precedente*/
 		Rectangle carre = new Rectangle(0,0,80,80);

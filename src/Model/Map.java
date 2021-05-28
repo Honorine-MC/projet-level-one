@@ -10,6 +10,9 @@ public class Map extends Observable{
 	public int nbLig;
 	public int nbCol;
 	public Case [][] plateau;
+	public String message = new String("");
+	int[] couplePosition = new int[2];
+	String[] infoObserver = new String[3];
 	
 	/*Constructeur*/
 	public Map(int n, int p) {
@@ -181,6 +184,10 @@ public class Map extends Observable{
 			if(!o.isOuvert()){
 				res = false;
 				System.out.println("Vous ne pouvez pas passer cet obstacle !");
+				this.message = "Vous ne pouvez pas passer cet obstacle !";
+				this.infoObserver[2] = this.message;
+				this.setChanged();
+				this.notifyObservers(this.infoObserver);
 			}
 		}
 		if(this.plateau[x][y].getElement() instanceof Porte){
@@ -194,12 +201,20 @@ public class Map extends Observable{
 			if(!p.isOuvert() && haveKey==false){
 				res = false;
 				System.out.println("Il te faut une clef Ryad");
+				this.message = "Il te faut une clef Ryad !";
+				this.infoObserver[2] = this.message;
+				this.setChanged();
+				this.notifyObservers(this.infoObserver);
 			}
 		}
 		/*On verifie si le monstre a été battu*/
 		if(this.plateau[x][y].getElement() instanceof Monstre){
 			Monstre m = (Monstre)this.plateau[x][y].getElement();
 			System.out.println("Vous vous faites attaquer par " + m.getNom());
+			this.message = "Vous vous faites attaquer par " + m.getNom() +"!";
+			this.infoObserver[2] = this.message;
+			this.setChanged();
+			this.notifyObservers(this.infoObserver);
 			combat(m);
 //			this.joueur.attaquer((Monstre)this.plateau[x][y].getElement());
 //			this.monstre.attaquer((Joueur)this.plateau[x][y].getElement());
@@ -218,6 +233,10 @@ public class Map extends Observable{
 		do {	
 			m.attaquer(joueur);
 			System.out.println(m.getNom() + " inflige " + m.getDegat_inflige() + " points de dégats à " + joueur.getNom());
+			this.message = m.getNom() + " inflige " + m.getDegat_inflige() + " points de dégats à " + joueur.getNom();
+			this.infoObserver[2] = this.message;
+			this.setChanged();
+			this.notifyObservers(this.infoObserver);
 			System.out.println("Il reste " + this.joueur.getVie() + " PV à " + joueur.getNom());
 			this.joueur.attaquer(m);
 			System.out.println(joueur.getNom() + " inflige " + joueur.getDegat() + " points de dégats à " + m.getNom());
@@ -258,11 +277,13 @@ public class Map extends Observable{
 			this.plateau[currentPositionX][currentPositionY].setElement(null);
 			this.joueur.avancer(x, y);//deplacement joueur
 			this.plateau[x][y].setElement(this.joueur);
-			int[] couplePosition = new int[2];
 			couplePosition[0]=currentPositionX;
 			couplePosition[1]=currentPositionY;
+			/*Conversion coordonnee en String pour envoyer au controller*/
+			this.infoObserver[0] = Integer.toString(currentPositionX);
+			this.infoObserver[1] = Integer.toString(currentPositionY);
 			this.setChanged();
-			this.notifyObservers(couplePosition);
+			this.notifyObservers(this.infoObserver);
 			
 		}
 		

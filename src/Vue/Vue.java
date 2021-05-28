@@ -188,8 +188,8 @@ public class Vue extends Application{
 			this.map.joueur.addObserver(jc);
 			
 			TexteController tc = new TexteController(b);
-//			this.map.addObserver(tc);
-//			this.map.joueur.addObserver(tc);
+			this.map.addObserver(tc);
+			//this.map.joueur.addObserver(tc);
 			/*Fin Controller*/
 			
 			primaryStage.setTitle("LEVEL ONE");
