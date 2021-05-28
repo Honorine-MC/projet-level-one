@@ -2,6 +2,11 @@ package Model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.StageStyle;
+
 public class Map extends Observable{
 	
 	/*Attributs*/
@@ -251,7 +256,18 @@ public class Map extends Observable{
 			this.infoObserver[2] = this.message;
 			this.setChanged();
 			this.notifyObservers(this.infoObserver);
-			javax.swing.JOptionPane.showMessageDialog(null,"Bravo tu as gagné !");
+			
+			/*Partie Alert victoire */
+			Alert gagner = new Alert(Alert.AlertType.INFORMATION);
+			gagner.initStyle(StageStyle.UTILITY);
+			gagner.setTitle("Vous avez Gagnez !");
+			gagner.setHeaderText(null);
+			gagner.setContentText("Bravo ! tu as gagner !");
+			Image image = new Image("Vue/mahrez.gif");
+			ImageView imageView = new ImageView(image);
+			gagner.setGraphic(imageView);
+			gagner.showAndWait();
+			//javax.swing.JOptionPane.showMessageDialog(null,"Bravo tu as gagné !");
 			System.exit(0);
 		}
 		return res;
@@ -278,7 +294,17 @@ public class Map extends Observable{
 			}
 			else if (joueur.estVaincu()) {
 				combatEnCours = false;
-				javax.swing.JOptionPane.showMessageDialog(null,"Vous n'avez plus de points de vie, vous avez perdu !");
+				/*Partie Alert victoire */
+				Alert gagner = new Alert(Alert.AlertType.INFORMATION);
+				gagner.initStyle(StageStyle.UTILITY);
+				gagner.setTitle("Vous avez Perdu ! La honte");
+				gagner.setHeaderText(null);
+				gagner.setContentText("Vous avez Perdu ! La honte");
+				Image image = new Image("Vue/perdu.gif");
+				ImageView imageView = new ImageView(image);
+				gagner.setGraphic(imageView);
+				gagner.showAndWait();
+				//javax.swing.JOptionPane.showMessageDialog(null,"Vous n'avez plus de points de vie, vous avez perdu !");
 				System.exit(0);
 			}
 			this.joueur.attaquer(m);
@@ -294,7 +320,17 @@ public class Map extends Observable{
 			}
 			else if (joueur.estVaincu()) {
 				combatEnCours = false;
-				javax.swing.JOptionPane.showMessageDialog(null,"Vous n'avez plus de points de vie, vous avez perdu !");
+				/*Partie Alert victoire */
+				Alert gagner = new Alert(Alert.AlertType.INFORMATION);
+				gagner.initStyle(StageStyle.UTILITY);
+				gagner.setTitle("Vous avez Perdu ! La honte");
+				gagner.setHeaderText(null);
+				gagner.setContentText("Vous avez Perdu ! La honte");
+				Image image = new Image("Vue/perdu.gif");
+				ImageView imageView = new ImageView(image);
+				gagner.setGraphic(imageView);
+				gagner.showAndWait();
+				//javax.swing.JOptionPane.showMessageDialog(null,"Vous n'avez plus de points de vie, vous avez perdu !");
 				System.exit(0);
 			}
 		}while (combatEnCours == true);
@@ -337,70 +373,4 @@ public class Map extends Observable{
 		}
 		
 	}
-	
-	public void deplaceJoueur(int deplace) {
-		int currentPositionX = this.joueur.getPositionX();
-		int currentPositionY = this.joueur.getPositionY();
-		switch (deplace) {
-		case 8 :
-			if(currentPositionX != 0 ) {
-				if(this.deplacement_valide(currentPositionX-1, currentPositionY)) {
-					this.plateau[currentPositionX][currentPositionY].setElement(null);
-					this.joueur.avancer(currentPositionX-1, currentPositionY);//deplacement joueur
-					this.plateau[currentPositionX-1][currentPositionY].setElement(this.joueur);
-					this.setChanged();
-					this.notifyObservers();
-				}
-			}
-			else {
-				System.out.println("Vous ne pouvez pas vous déplacer vers le haut !");
-			}
-		break;
-		case 2 :
-			if(currentPositionX != 7) {
-				if(this.deplacement_valide(currentPositionX+1, currentPositionY)) {
-					this.plateau[currentPositionX][currentPositionY].setElement(null);
-					this.joueur.avancer(currentPositionX+1, currentPositionY);//deplacement joueur
-					this.plateau[currentPositionX+1][currentPositionY].setElement(this.joueur);
-					this.setChanged();
-					this.notifyObservers();
-				}
-			}
-			else {
-				System.out.println("Vous ne pouvez pas vous déplacer vers le bas !");
-			}
-		break;
-		case 6 :
-			if(currentPositionY != 7) {
-				if(this.deplacement_valide(currentPositionX, currentPositionY+1)) {
-					this.plateau[currentPositionX][currentPositionY].setElement(null);
-					this.joueur.avancer(currentPositionX, currentPositionY+1);//deplacement joueur
-					this.plateau[currentPositionX][currentPositionY+1].setElement(this.joueur);
-					this.setChanged();
-					this.notifyObservers();
-				}
-			}
-			else {
-				System.out.println("Vous ne pouvez pas vous déplacer vers la droite !");
-			}
-		break;
-		case 4 :
-			if(currentPositionY != 0) {
-				if(this.deplacement_valide(currentPositionX, currentPositionY-1)) {
-					this.plateau[currentPositionX][currentPositionY].setElement(null);
-					this.joueur.avancer(currentPositionX, currentPositionY-1);//deplacement joueur
-					this.plateau[currentPositionX][currentPositionY-1].setElement(this.joueur);
-					this.setChanged();
-					this.notifyObservers();
-				}
-			}
-			else {
-				System.out.println("Vous ne pouvez pas vous déplacer vers la gauche !");
-			}
-		break;
-		default :
-			System.out.println("Vers où voulez-vous vous déplacer ? (6 = droite, 4 = gauche, 2 = bas, 8 = haut");
-		}
-	}
-	
 }

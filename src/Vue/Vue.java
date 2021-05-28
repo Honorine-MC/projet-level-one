@@ -63,7 +63,6 @@ public class Vue extends Application{
 			xpText.setFill(Color.BLACK);
 			bp.setBottom(xpText);
 			
-			
 			Rectangle icone = new Rectangle(0,0,30,30);
 			icone.setStroke(Color.BLACK);
 			Image imageicone = new Image(this.map.joueur.getImage());
@@ -76,9 +75,6 @@ public class Vue extends Application{
 			degatText.setFont(Font.font ("Verdana", 20));
 			degatText.setFill(Color.BLACK);
 			bp.setCenter(degatText);
-			
-			
-			
 			
 			/* Affichage de la "console" */
 			
@@ -99,7 +95,6 @@ public class Vue extends Application{
 			plateau.setMinSize(300, 300);
 			 
 			root.getChildren().add(plateau);
-			
 			
 			Case[][] plateauTab = map.plateau;
 			

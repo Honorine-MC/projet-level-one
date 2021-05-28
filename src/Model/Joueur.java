@@ -55,11 +55,6 @@ public class Joueur extends Personnage {
 				+ degat + "]";
 	}
 	
-	//permet d'avancer d'un certain nombre de case; 
-//	public void avancer(int nombre){
-//		this.setPositionX(this.getPositionX()+ nombre);
-//	}
-	
 	//permet d'attaquer un monstre
 	public void attaquer(Monstre m){
 		m.setVie(m.getVie()-this.getDegat());
@@ -113,8 +108,6 @@ public class Joueur extends Personnage {
 	public void avancer(int x, int y){
 		this.setPositionX(x);
 		this.setPositionY(y);
-		//appeler setChange
-		//Appeler NotifyObserver
 	}
 	
 	/**
@@ -129,7 +122,10 @@ public class Joueur extends Personnage {
 		}
 		return res;
 	}
-	
+	/**
+	 * Function -> renvoit true si le joueuer est vaincu
+	 * @return : boolean
+	 */
 	public boolean estVaincu(){
 		boolean res = false;
 		if(this.getVie() <=0){
@@ -139,6 +135,9 @@ public class Joueur extends Personnage {
 		return res;
 	}
 	
+	/**
+	 * Function -> void : monter niveau joueur
+	 */
 	public void monterNiveau() {
 		if (this.getXp() >= 10) {
 			this.setXp(this.getXp() - 10);
