@@ -21,7 +21,6 @@ public class Map extends Observable{
 		this.plateau = new Case[nbCol][nbLig];
 	}
 	
-	
 	/**
 	 * Method : void -> Initialise une Map en placeant différents élements à la main
 	 */
@@ -103,7 +102,7 @@ public class Map extends Observable{
 		Obstacle porte3 = new Porte(2,5,false);
 		this.plateau[2][5].setElement(porte3);
 		Obstacle porte4 = new Porte(6,1,false);
-		this.plateau[6][1].setElement(porte3);
+		this.plateau[6][1].setElement(porte4);
 		
 		/*Placement de la clef */
 		Item clef = new Clef(2,4,"clef");
