@@ -102,6 +102,8 @@ public class Map extends Observable{
 		this.plateau[1][2].setElement(porte2);
 		Obstacle porte3 = new Porte(2,5,false);
 		this.plateau[2][5].setElement(porte3);
+		Obstacle porte4 = new Porte(6,1,false);
+		this.plateau[6][1].setElement(porte3);
 		
 		/*Placement de la clef */
 		Item clef = new Clef(2,4,"clef");
