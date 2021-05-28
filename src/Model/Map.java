@@ -93,6 +93,8 @@ public class Map extends Observable{
 		this.plateau[5][7].setElement(mur27);
 		Obstacle mur28 = new Mur(6,7,false);
 		this.plateau[6][7].setElement(mur28);
+		Obstacle mur29 = new Mur(5,0,false);
+		this.plateau[5][0].setElement(mur29);
 		
 		/*Placement des portes*/
 		Obstacle porte1 = new Porte(3,1,true);
@@ -107,7 +109,6 @@ public class Map extends Observable{
 		/*Placement de la clef */
 		Item clef = new Clef(2,4,"clef");
 		this.plateau[2][4].setElement(clef);
-		
 		
 		/*Placement des monstres*/
 		Personnage monstre1 = new Monstre(5,4,"Muzan",9,2);
@@ -127,9 +128,9 @@ public class Map extends Observable{
 		/*Placement des PNJ*/
 		Personnage pnj1 = new Pnj(3,0,"a",arme1,10);
 		this.plateau[3][0].setElement(pnj1);
-		Personnage pnj2 = new Pnj(5,0,"b",potion1,10);
-		this.plateau[5][0].setElement(pnj2);
-		Personnage pnj3 = new Pnj(7,4,"Gojo",potion1,10);
+		Personnage pnj2 = new Pnj(0,0,"b",potion1,10);
+		this.plateau[0][0].setElement(pnj2);
+		Personnage pnj3 = new Princesse(7,4,"Princesse",potion1,10);
 		this.plateau[7][4].setElement(pnj3);		
 	}
 	
