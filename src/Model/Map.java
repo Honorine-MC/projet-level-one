@@ -237,7 +237,7 @@ public class Map extends Observable{
 		}
 		if(this.plateau[x][y].getElement() instanceof Item){
 			Item i = (Item)this.plateau[x][y].getElement();
-			this.message = "Tu viens de récupérer une "+ i.toString()+" dans ton inventaire";
+			this.message = "Tu viens de récupérer une "+ i.toString();
 			this.infoObserver[2] = this.message;
 			this.setChanged();
 			this.notifyObservers(this.infoObserver);

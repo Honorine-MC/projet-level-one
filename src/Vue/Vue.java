@@ -6,7 +6,6 @@ import Controller.MapController;
 import Controller.TexteController;
 import Model.Case;
 import Model.Element;
-import Model.Item;
 import Model.Joueur;
 import Model.Map;
 import Model.Porte;
@@ -34,7 +33,7 @@ public class Vue extends Application{
 	public void start(Stage primaryStage) throws Exception{
 		try{
 			VBox root = new VBox();
-			Scene scene = new Scene(root,1000,900);
+			Scene scene = new Scene(root,1650,900);
 			scene.setFill(Color.CADETBLUE);
 			
 			map.init();
@@ -354,7 +353,7 @@ public class Vue extends Application{
 	                if(event.getCode() == KeyCode.NUMPAD0){
 	                	if(joueur.getInventaire().size()> 0){
 							Text consoleText= new Text();
-							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(0).toString());
+							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(0).toString());
 							consoleText.setFont(Font.font ("Verdana", 20));
 							consoleText.setFill(Color.WHITE);
 							b.setTop(consoleText);
@@ -371,7 +370,7 @@ public class Vue extends Application{
 	                if(event.getCode() == KeyCode.NUMPAD1){
 	                	if(joueur.getInventaire().size()> 1){
 							Text consoleText= new Text();
-							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(1).toString());
+							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(1).toString());
 							consoleText.setFont(Font.font ("Verdana", 20));
 							consoleText.setFill(Color.WHITE);
 							b.setTop(consoleText);
@@ -388,7 +387,7 @@ public class Vue extends Application{
 	                if(event.getCode() == KeyCode.NUMPAD2){
 	                	if(joueur.getInventaire().size()> 2){
 							Text consoleText= new Text();
-							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(2).toString());
+							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(2).toString());
 							consoleText.setFont(Font.font ("Verdana", 20));
 							consoleText.setFill(Color.WHITE);
 							b.setTop(consoleText);
@@ -405,7 +404,7 @@ public class Vue extends Application{
 	                if(event.getCode() == KeyCode.NUMPAD3){
 	                	if(joueur.getInventaire().size()> 3){
 							Text consoleText= new Text();
-							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(3).toString());
+							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(3).toString());
 							consoleText.setFont(Font.font ("Verdana", 20));
 							consoleText.setFill(Color.WHITE);
 							b.setTop(consoleText);
@@ -423,7 +422,7 @@ public class Vue extends Application{
 	                if(event.getCode() == KeyCode.NUMPAD4){
 	                	if(joueur.getInventaire().size()> 4){
 							Text consoleText= new Text();
-							consoleText.setText("Tu as utilisé ton Item : " + joueur.getInventaire().get(4).toString());
+							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(4).toString());
 							consoleText.setFont(Font.font ("Verdana", 20));
 							consoleText.setFill(Color.WHITE);
 							b.setTop(consoleText);

@@ -7,4 +7,7 @@ public class Clef extends Item{
 		// TODO Auto-generated constructor stub
 	}
 
+	public String toString() {
+		return "une clé qui te permettra d'ouvrir toutes les portes";
+	}
 }
