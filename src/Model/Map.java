@@ -262,7 +262,7 @@ public class Map extends Observable{
 			gagner.initStyle(StageStyle.UTILITY);
 			gagner.setTitle("Vous avez Gagnez !");
 			gagner.setHeaderText(null);
-			gagner.setContentText("Bravo ! tu as gagner !");
+			gagner.setContentText("Bravo ! tu as gagné !");
 			Image image = new Image("Vue/mahrez.gif");
 			ImageView imageView = new ImageView(image);
 			gagner.setGraphic(imageView);
@@ -297,7 +297,7 @@ public class Map extends Observable{
 				/*Partie Alert victoire */
 				Alert gagner = new Alert(Alert.AlertType.INFORMATION);
 				gagner.initStyle(StageStyle.UTILITY);
-				gagner.setTitle("Vous avez Perdu ! La honte");
+				gagner.setTitle("Vous avez Perdu");
 				gagner.setHeaderText(null);
 				gagner.setContentText("Vous avez Perdu ! La honte");
 				Image image = new Image("Vue/perdu.gif");
