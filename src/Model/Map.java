@@ -177,6 +177,12 @@ public class Map extends Observable{
 	 * Function -> Autorise au non un deplacement du joueur
 	 */
 	public boolean deplacement_valide(int x, int y){
+		this.infoObserver[0]="0";
+		this.infoObserver[1] ="1";
+		this.infoObserver[2] = "";
+		this.setChanged();
+		this.notifyObservers(this.infoObserver);
+		
 		boolean res = true;
 		/*On verifie si la porte ou le mur est traversable*/
 		if(this.plateau[x][y].getElement() instanceof Mur || this.plateau[x][y].getElement() instanceof Porte){
@@ -222,11 +228,29 @@ public class Map extends Observable{
 				res=false;
 			}
 		}
+		if(this.plateau[x][y].getElement() instanceof Pnj){
+			Pnj pnj = (Pnj)this.plateau[x][y].getElement();
+			this.message = "Voici un item "+ pnj.getItem().toString();
+			this.infoObserver[2] = this.message;
+			this.setChanged();
+			this.notifyObservers(this.infoObserver);
+		}
+		if(this.plateau[x][y].getElement() instanceof Item){
+			Item i = (Item)this.plateau[x][y].getElement();
+			this.message = "Tu viens de récupérer une "+ i.toString()+" dans ton inventaire";
+			this.infoObserver[2] = this.message;
+			this.setChanged();
+			this.notifyObservers(this.infoObserver);
+		}
 		/* TODO CONDITION DE VICTOIRE 
 		 * Etre sur la position X = 7 et Y = 4
 		 * Avoir battu tous les ennemis => être niveau supérieur à 3
 		 * */
 		if((this.joueur.getPositionX() == 7 && this.joueur.getPositionY() == 4) && (this.joueur.getNiveau() >= 2)) {
+			this.message = "Tu as gagné";
+			this.infoObserver[2] = this.message;
+			this.setChanged();
+			this.notifyObservers(this.infoObserver);
 			javax.swing.JOptionPane.showMessageDialog(null,"Bravo tu as gagné !");
 			System.exit(0);
 		}
@@ -293,7 +317,7 @@ public class Map extends Observable{
 				Pnj pnj = (Pnj)this.plateau[x][y].getElement();
 				this.joueur.prendre(pnj);
 			}
-			
+						
 			/*Mise a jour de la map*/
 			this.plateau[currentPositionX][currentPositionY].setElement(null);
 			this.joueur.avancer(x, y);//deplacement joueur

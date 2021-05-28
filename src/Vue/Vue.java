@@ -6,6 +6,7 @@ import Controller.MapController;
 import Controller.TexteController;
 import Model.Case;
 import Model.Element;
+import Model.Item;
 import Model.Joueur;
 import Model.Map;
 import Model.Porte;
@@ -236,9 +237,6 @@ public class Vue extends Application{
 	    					}
 	    					else{
 	    						map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
-    							Text consoleText= new Text();
-    							consoleText.setText("");
-    							b.setTop(consoleText);
 	    					}
 	    					
 	    				}
@@ -276,9 +274,6 @@ public class Vue extends Application{
 	    					}
 	    					else{
 	    						map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
-    							Text consoleText= new Text();
-    							consoleText.setText("");
-    							b.setTop(consoleText);
 	    					}
 	    				}
 	    			}
@@ -315,9 +310,6 @@ public class Vue extends Application{
 	    					}
 	    					else{
 		    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
-    							Text consoleText= new Text();
-    							consoleText.setText("");
-    							b.setTop(consoleText);
 	    					}
 	    				}
 	                }
@@ -354,28 +346,96 @@ public class Vue extends Application{
 	    					}
 	    					else{
 		    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
-    							Text consoleText= new Text();
-    							consoleText.setText("");
-    							b.setTop(consoleText);
 	    					}
 	    				}
 	                }
 	                
 	                /*Lecture Clavier pour inventaire*/
 	                if(event.getCode() == KeyCode.NUMPAD0){
-	                	joueur.utiliser(joueur.getInventaire().get(0));
+	                	if(joueur.getInventaire().size()> 0){
+							Text consoleText= new Text();
+							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(0).toString());
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+		                	joueur.utiliser(joueur.getInventaire().get(0));
+	                	}
+	                	else{
+							Text consoleText= new Text();
+							consoleText.setText("Tu n'as pas d'item à cette endroit");
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+	                	}
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD1){
-	                	joueur.utiliser(joueur.getInventaire().get(1));
+	                	if(joueur.getInventaire().size()> 1){
+							Text consoleText= new Text();
+							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(1).toString());
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+		                	joueur.utiliser(joueur.getInventaire().get(1));
+	                	}
+	                	else{
+							Text consoleText= new Text();
+							consoleText.setText("Tu n'as pas d'item à cette endroit");
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+	                	}
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD2){
-	                	joueur.utiliser(joueur.getInventaire().get(2));
+	                	if(joueur.getInventaire().size()> 2){
+							Text consoleText= new Text();
+							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(2).toString());
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+		                	joueur.utiliser(joueur.getInventaire().get(2));
+	                	}
+	                	else{
+							Text consoleText= new Text();
+							consoleText.setText("Tu n'as pas d'item à cette endroit");
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+	                	}
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD3){
-	                	joueur.utiliser(joueur.getInventaire().get(3));
+	                	if(joueur.getInventaire().size()> 3){
+							Text consoleText= new Text();
+							consoleText.setText("Tu as utilisé ton Item" + joueur.getInventaire().get(3).toString());
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+		                	joueur.utiliser(joueur.getInventaire().get(3));
+	                	}
+	                	else{
+							Text consoleText= new Text();
+							consoleText.setText("Tu n'as pas d'item à cette endroit");
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+	                	}
+
 	                }
 	                if(event.getCode() == KeyCode.NUMPAD4){
-	                	joueur.utiliser(joueur.getInventaire().get(4));
+	                	if(joueur.getInventaire().size()> 4){
+							Text consoleText= new Text();
+							consoleText.setText("Tu as utilisé ton Item : " + joueur.getInventaire().get(4).toString());
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+		                	joueur.utiliser(joueur.getInventaire().get(4));
+	                	}
+	                	else{
+							Text consoleText= new Text();
+							consoleText.setText("Tu n'as pas d'item à cette endroit");
+							consoleText.setFont(Font.font ("Verdana", 20));
+							consoleText.setFill(Color.WHITE);
+							b.setTop(consoleText);
+	                	}
 	                }	                
 	            }
 	        });

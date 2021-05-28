@@ -20,7 +20,7 @@ public class Arme extends Item{
 
 	@Override
 	public String toString() {
-		return "Arme [degat_apporte=" + degat_apporte + "]";
+		return "arme qui te donne " + degat_apporte +" de degat en plus";
 	}
 	
 }

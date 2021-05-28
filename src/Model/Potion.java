@@ -20,7 +20,7 @@ public class Potion extends Item {
 
 	@Override
 	public String toString() {
-		return "Potion [vie_apporte=" + vie_apporte + "]";
+		return " potion qui te donne " + vie_apporte +" de vie en plus";
 	}
 	
 }

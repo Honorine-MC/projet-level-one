@@ -19,7 +19,7 @@ public class Item extends Element{
 
 	@Override
 	public String toString() {
-		return "Item [nom=" + nom + "]";
+		return " Item [nom=" + nom + "]";
 	}
 	
 }
