@@ -189,7 +189,9 @@ public class Map extends Observable{
 				this.notifyObservers(this.infoObserver);
 			}
 		}
+		
 		if(this.plateau[x][y].getElement() instanceof Porte){
+			
 			Porte p = (Porte) this.plateau[x][y].getElement();
 			boolean haveKey = false;
 			for(Item i : this.joueur.getInventaire()){

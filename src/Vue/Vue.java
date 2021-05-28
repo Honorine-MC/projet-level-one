@@ -82,7 +82,7 @@ public class Vue extends Application{
 			
 			/* Affichage de la "console" */
 			
-			BorderPane b = new BorderPane();
+			final BorderPane b = new BorderPane();
 			b.setPadding(new Insets(20, 0, 0, 700));
 			root.getChildren().add(b);
 			
@@ -189,7 +189,6 @@ public class Vue extends Application{
 			
 			TexteController tc = new TexteController(b);
 			this.map.addObserver(tc);
-			//this.map.joueur.addObserver(tc);
 			/*Fin Controller*/
 			
 			primaryStage.setTitle("LEVEL ONE");
@@ -227,10 +226,21 @@ public class Vue extends Application{
 	    							map.plateau[joueur.getPositionX()+1][joueur.getPositionY()].setElement(p);
 	    							map.deplacerJoueur(joueur.getPositionX()+2,joueur.getPositionY());
 	    						}
+	    						else{
+	    							Text consoleText= new Text();
+	    							consoleText.setText("Il te faut une clé pour passer");
+	    							consoleText.setFont(Font.font ("Verdana", 20));
+	    							consoleText.setFill(Color.WHITE);
+	    							b.setTop(consoleText);
+	    						}
 	    					}
 	    					else{
 	    						map.deplacerJoueur(joueur.getPositionX()+1,joueur.getPositionY());
+    							Text consoleText= new Text();
+    							consoleText.setText("");
+    							b.setTop(consoleText);
 	    					}
+	    					
 	    				}
 	                }
 	                if (event.getCode() == KeyCode.LEFT) {
@@ -256,9 +266,19 @@ public class Vue extends Application{
 	    							map.plateau[joueur.getPositionX()-1][joueur.getPositionY()].setElement(p);
 	    							map.deplacerJoueur(joueur.getPositionX()-2,joueur.getPositionY());
 	    						}
+	    						else{
+	    							Text consoleText= new Text();
+	    							consoleText.setText("Il te faut une clé pour passer");
+	    							consoleText.setFont(Font.font ("Verdana", 20));
+	    							consoleText.setFill(Color.WHITE);
+	    							b.setTop(consoleText);
+	    						}
 	    					}
 	    					else{
 	    						map.deplacerJoueur(joueur.getPositionX()-1,joueur.getPositionY());
+    							Text consoleText= new Text();
+    							consoleText.setText("");
+    							b.setTop(consoleText);
 	    					}
 	    				}
 	    			}
@@ -285,9 +305,19 @@ public class Vue extends Application{
 	    							map.plateau[joueur.getPositionX()][joueur.getPositionY()-1].setElement(p);
 			    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-2);
 	    						}
+	    						else{
+	    							Text consoleText= new Text();
+	    							consoleText.setText("Il te faut une clé pour passer");
+	    							consoleText.setFont(Font.font ("Verdana", 20));
+	    							consoleText.setFill(Color.WHITE);
+	    							b.setTop(consoleText);
+	    						}
 	    					}
 	    					else{
 		    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()-1);
+    							Text consoleText= new Text();
+    							consoleText.setText("");
+    							b.setTop(consoleText);
 	    					}
 	    				}
 	                }
@@ -314,9 +344,19 @@ public class Vue extends Application{
 	    							map.plateau[joueur.getPositionX()][joueur.getPositionY()+1].setElement(p);
 			    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+2);
 	    						}
+	    						else{
+	    							Text consoleText= new Text();
+	    							consoleText.setText("Il te faut une clé pour passer");
+	    							consoleText.setFont(Font.font ("Verdana", 20));
+	    							consoleText.setFill(Color.WHITE);
+	    							b.setTop(consoleText);
+	    						}
 	    					}
 	    					else{
 		    					map.deplacerJoueur(joueur.getPositionX(),joueur.getPositionY()+1);
+    							Text consoleText= new Text();
+    							consoleText.setText("");
+    							b.setTop(consoleText);
 	    					}
 	    				}
 	                }
