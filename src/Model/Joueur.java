@@ -5,6 +5,7 @@ public class Joueur extends Personnage {
 	private ArrayList<Item> inventaire;
 	private double xp;
 	private double degat;
+	private int niveau;
 	
 	//constructeur
 	public Joueur(String nom,double vie,double degat) {
@@ -12,6 +13,7 @@ public class Joueur extends Personnage {
 		inventaire = new ArrayList<Item>();
 		this.xp = 0;
 		this.degat = degat;
+		this.niveau = niveau;
 	}
 
 	//getteurs
@@ -26,7 +28,10 @@ public class Joueur extends Personnage {
 	public double getDegat() {
 		return degat;
 	}
-
+	
+	public int getNiveau() {
+		return niveau;
+	}
 	//setteurs
 	public void setInventaire(ArrayList<Item> inventaire) {
 		this.inventaire = inventaire;
@@ -38,6 +43,10 @@ public class Joueur extends Personnage {
 
 	public void setDegat(double degat) {
 		this.degat = degat;
+	}
+	
+	public void setNiveau(int niveau) {
+		this.niveau = niveau;
 	}
 	
 	@Override
@@ -119,5 +128,26 @@ public class Joueur extends Personnage {
 			}
 		}
 		return res;
+	}
+	
+	public boolean estVaincu(){
+		boolean res = false;
+		if(this.getVie() <=0){
+			res = true;
+		}
+		return res;
+	}
+	
+	public void monterNiveau() {
+		if (this.getXp() >= 10) {
+			this.setXp(0);			
+			this.setNiveau(this.getNiveau() + 1);
+			System.out.println("Vous gagnez un niveau !");
+			this.setDegat(this.getDegat() + 2);
+			System.out.println("Votre force augmente : " + this.getDegat());
+			this.setVie(this.getVie() + 2);
+			System.out.println("Votre vie augmente : " + this.getVie());
+
+		}
 	}
 }

@@ -30,7 +30,8 @@ public class JoueurController implements Observer{
 		
 		Text xpText= new Text();
 		double xp = this.joueur.getXp();
-		xpText.setText("Xp : "+String.valueOf(xp));
+		int niveau = this.joueur.getNiveau();
+		xpText.setText("Xp : "+String.valueOf(xp) + "     Niveau : " + String.valueOf(niveau));
 		xpText.setFont(Font.font ("Verdana", 20));
 		xpText.setFill(Color.BLACK);
 		bp.setBottom(xpText);

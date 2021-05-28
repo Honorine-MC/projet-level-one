@@ -6,6 +6,7 @@ public class Map extends Observable{
 	
 	/*Attributs*/
 	public Joueur joueur;
+	public Monstre m;
 	public int nbLig;
 	public int nbCol;
 	public Case [][] plateau;
@@ -198,12 +199,41 @@ public class Map extends Observable{
 		/*On verifie si le monstre a été battu*/
 		if(this.plateau[x][y].getElement() instanceof Monstre){
 			Monstre m = (Monstre)this.plateau[x][y].getElement();
+			System.out.println("Vous vous faites attaquer par " + m.getNom());
+			combat(m);
+//			this.joueur.attaquer((Monstre)this.plateau[x][y].getElement());
+//			this.monstre.attaquer((Joueur)this.plateau[x][y].getElement());
+//			System.out.println(this.m.getVie());
+//			System.out.println(this.joueur.getVie());			
 			if(!m.estVaincu()){
 				res=false;
 			}
 		}
 		return res;
 		
+	}
+	
+	public void combat (Monstre m) {
+		boolean combatEnCours = true;
+		do {	
+			m.attaquer(joueur);
+			System.out.println(m.getNom() + " inflige " + m.getDegat_inflige() + " points de dégats à " + joueur.getNom());
+			System.out.println("Il reste " + this.joueur.getVie() + " PV à " + joueur.getNom());
+			this.joueur.attaquer(m);
+			System.out.println(joueur.getNom() + " inflige " + joueur.getDegat() + " points de dégats à " + m.getNom());
+			System.out.println("Il reste " + m.getVie() + " PV à " + m.getNom());
+			if (m.estVaincu()) {
+				System.out.println("Vous avez vaincu " + m.getNom());
+				this.joueur.setXp(this.joueur.getXp() + m.getXp_apporte());
+				System.out.println("Vous gagnez " + m.getXp_apporte() + " points d'expérience !");
+				this.joueur.monterNiveau();
+				combatEnCours = false;
+			}
+			else if (joueur.estVaincu()) {
+				combatEnCours = false;
+				System.out.println("Vous n'avez plus de points de vie, vous avez perdu !");
+			}
+		}while (combatEnCours == true);
 	}
 	
 	/**

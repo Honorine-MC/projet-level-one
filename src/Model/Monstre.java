@@ -49,7 +49,7 @@ public class Monstre extends Personnage {
 	 */
 	public boolean estVaincu(){
 		boolean res = false;
-		if(this.getVie()==0){
+		if(this.getVie()<=0){
 			res = true;
 		}
 		return res;
