@@ -15,9 +15,11 @@ public class TexteController implements Observer{
 	}
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
+		String[] infoFromMap = (String[])arg1;
+		String message = infoFromMap[2];
 		BorderPane b = this.b;
 		Text consoleText= new Text();
-		consoleText.setText((String) arg1);
+		consoleText.setText(message);
 		consoleText.setFont(Font.font ("Verdana", 20));
 		consoleText.setFill(Color.WHITE);
 		b.setTop(consoleText);
