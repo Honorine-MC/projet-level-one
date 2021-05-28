@@ -109,24 +109,24 @@ public class Map extends Observable{
 		
 		
 		/*Placement des monstres*/
-		Personnage monstre1 = new Monstre(5,4,"Muzan",10,2);
+		Personnage monstre1 = new Monstre(5,4,"Muzan",9,2);
 		this.plateau[5][4].setElement(monstre1);
-		Personnage monstre2 = new Monstre(7,4,"Akaza",10,2);
+		Personnage monstre2 = new Monstre(7,4,"Akaza",9,6);
 		this.plateau[7][3].setElement(monstre2);
-		Personnage monstre3 = new Monstre(1,7,"Hisoka",10,2);
+		Personnage monstre3 = new Monstre(1,7,"Hisoka",9,2);
 		this.plateau[1][7].setElement(monstre3);
 		
 		/*Placement des ITEM*/
 		Item potion1 = new Potion(3,5,"popo",10);
 		this.plateau[3][5].setElement(potion1);
 		
-		Item arme1 = new Arme(0,6,"arc",5);
+		Item arme1 = new Arme(0,6,"épée",2);
 		this.plateau[0][6].setElement(arme1);
 		
 		/*Placement des PNJ*/
 		Personnage pnj1 = new Pnj(3,0,"a",arme1,10);
 		this.plateau[3][0].setElement(pnj1);
-		Personnage pnj2 = new Pnj(5,0,"b",arme1,10); // autre arme
+		Personnage pnj2 = new Pnj(5,0,"b",potion1,10);
 		this.plateau[5][0].setElement(pnj2);
 		Personnage pnj3 = new Pnj(7,4,"Gojo",potion1,10);
 		this.plateau[7][4].setElement(pnj3);		
@@ -214,7 +214,6 @@ public class Map extends Observable{
 			this.infoObserver[2] = this.message;
 			this.setChanged();
 			this.notifyObservers(this.infoObserver);
-			combat(m);
 			if(!m.estVaincu()){
 				res=false;
 			}
@@ -223,7 +222,7 @@ public class Map extends Observable{
 		 * Etre sur la position X = 7 et Y = 4
 		 * Avoir battu tous les ennemis => être niveau supérieur à 3
 		 * */
-		if((this.joueur.getPositionX() == 7 && this.joueur.getPositionY() == 4) && (this.joueur.getNiveau() > 3)) {
+		if((this.joueur.getPositionX() == 7 && this.joueur.getPositionY() == 4) && (this.joueur.getNiveau() >= 2)) {
 			javax.swing.JOptionPane.showMessageDialog(null,"Bravo tu as gagné !");
 			System.exit(0);
 		}
@@ -241,9 +240,23 @@ public class Map extends Observable{
 			this.setChanged();
 			this.notifyObservers(this.infoObserver);
 			System.out.println("Il reste " + this.joueur.getVie() + " PV à " + joueur.getNom());
+			/* Vérifie si un des deux personnages est mort */
+			if (m.estVaincu()) {
+				System.out.println("Vous avez vaincu " + m.getNom());
+				this.joueur.setXp(this.joueur.getXp() + m.getXp_apporte());
+				System.out.println("Vous gagnez " + m.getXp_apporte() + " points d'expérience !");
+				this.joueur.monterNiveau();
+				combatEnCours = false;
+			}
+			else if (joueur.estVaincu()) {
+				combatEnCours = false;
+				javax.swing.JOptionPane.showMessageDialog(null,"Vous n'avez plus de points de vie, vous avez perdu !");
+				System.exit(0);
+			}
 			this.joueur.attaquer(m);
 			System.out.println(joueur.getNom() + " inflige " + joueur.getDegat() + " points de dégats à " + m.getNom());
 			System.out.println("Il reste " + m.getVie() + " PV à " + m.getNom());
+			/* Vérifie si un des deux personnages est mort */
 			if (m.estVaincu()) {
 				System.out.println("Vous avez vaincu " + m.getNom());
 				this.joueur.setXp(this.joueur.getXp() + m.getXp_apporte());

@@ -85,14 +85,14 @@ public class Joueur extends Personnage {
 		if( i instanceof Arme){
 			Arme a = (Arme)i;
 			this.inventaire.remove(i);
-			this.setDegat(a.getDegat_apporte());
+			this.setDegat(this.getDegat() + a.getDegat_apporte());
 			this.setChanged();
 			this.notifyObservers();
 		}
 		else if ( i instanceof Potion){
 			Potion p = (Potion)i;
 			this.inventaire.remove(i);
-			this.setVie(p.getVie_apporte());
+			this.setVie(this.getVie() + p.getVie_apporte());
 			this.setChanged();
 			this.notifyObservers();
 		}
@@ -141,14 +141,13 @@ public class Joueur extends Personnage {
 	
 	public void monterNiveau() {
 		if (this.getXp() >= 10) {
-			this.setXp(0);			
+			this.setXp(this.getXp() - 10);
 			this.setNiveau(this.getNiveau() + 1);
-			System.out.println("Vous gagnez un niveau !");
+			System.out.println("Vous gagnez un niveau !" + this.getNiveau());
 			this.setDegat(this.getDegat() + 2);
 			System.out.println("Votre force augmente : " + this.getDegat());
 			this.setVie(this.getVie() + 2);
 			System.out.println("Votre vie augmente : " + this.getVie());
-
 		}
 	}
 }
