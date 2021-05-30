@@ -345,7 +345,7 @@ public class Vue extends Application{
 	                }
 	                
 	                /*Lecture Clavier pour inventaire*/
-	                if(event.getCode() == KeyCode.NUMPAD0){
+	                if(event.getCode() == KeyCode.NUMPAD0 || event.getCode() == KeyCode.DIGIT0){
 	                	if(joueur.getInventaire().size()> 0){
 							Text consoleText= new Text();
 							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(0).toString());
@@ -362,7 +362,7 @@ public class Vue extends Application{
 							b.setTop(consoleText);
 	                	}
 	                }
-	                if(event.getCode() == KeyCode.NUMPAD1){
+	                if(event.getCode() == KeyCode.NUMPAD1  || event.getCode() == KeyCode.DIGIT1){
 	                	if(joueur.getInventaire().size()> 1){
 							Text consoleText= new Text();
 							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(1).toString());
@@ -379,7 +379,7 @@ public class Vue extends Application{
 							b.setTop(consoleText);
 	                	}
 	                }
-	                if(event.getCode() == KeyCode.NUMPAD2){
+	                if(event.getCode() == KeyCode.NUMPAD2  || event.getCode() == KeyCode.DIGIT2){
 	                	if(joueur.getInventaire().size()> 2){
 							Text consoleText= new Text();
 							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(2).toString());
@@ -396,7 +396,7 @@ public class Vue extends Application{
 							b.setTop(consoleText);
 	                	}
 	                }
-	                if(event.getCode() == KeyCode.NUMPAD3){
+	                if(event.getCode() == KeyCode.NUMPAD3  || event.getCode() == KeyCode.DIGIT3){
 	                	if(joueur.getInventaire().size()> 3){
 							Text consoleText= new Text();
 							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(3).toString());
@@ -414,7 +414,7 @@ public class Vue extends Application{
 	                	}
 
 	                }
-	                if(event.getCode() == KeyCode.NUMPAD4){
+	                if(event.getCode() == KeyCode.NUMPAD4  || event.getCode() == KeyCode.DIGIT4){
 	                	if(joueur.getInventaire().size()> 4){
 							Text consoleText= new Text();
 							consoleText.setText("Tu as utilisé ton Item " + joueur.getInventaire().get(4).toString());

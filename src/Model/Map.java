@@ -1,7 +1,6 @@
 package Model;
 import java.util.ArrayList;
 import java.util.Observable;
-
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,7 +10,7 @@ public class Map extends Observable{
 	
 	/*Attributs*/
 	public Joueur joueur;
-	public Monstre m;
+//	public Monstre m;
 	public int nbLig;
 	public int nbCol;
 	public Case [][] plateau;
